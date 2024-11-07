@@ -1,5 +1,78 @@
-.main_bavbar_container h2 {
+.main_navbar_outer_container {
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  position: fixed;
+  background-color: white;
+}
+
+.main_navbar_inner_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1536px;
+  background-color: #ffffff;
+  border-bottom: 2px solid black;
+}
+
+/* Styleing the bavbar contant__ */
+
+/* Navbar image section */
+
+.navbar_image_outer_container {
+  height: 70px;
+  width: 180px;
+  cursor: pointer;
+}
+
+.navbar_image_outer_container img {
+  height: 100%;
+  width: 100%;
+}
+
+/* Navbar navigation section */
+
+.main_navbar_navigation_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 30px;
+}
+
+.main_navbar_navigate_route_container ul {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  outline: none;
+  font-family: "Roboto", serif;
+}
+
+.main_navbar_user_info_container {
+  gap: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_navbar_user_info_container h3 {
   font-size: 2rem;
-  font-weight: 700;
-  color: red;
+}
+
+.navbar_cart_info_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar_cart_info_container span{
+  color: white;
+  border-radius: 16px;
+  padding: 0 10px;
+  font-weight: 600;
+  background-color: black;
 }
