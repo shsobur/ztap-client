@@ -1,0 +1,113 @@
+.main_baner_outer_container {
+  height: calc(100vh - 72px);
+  width: 100%;
+  position: relative;
+  /* border: 1px solid tomato; */
+  margin-top: 72px;
+}
+
+/* Baner video styleing__ */
+
+.main_baner_video_container {
+  height: 100%;
+  width: 100%;
+}
+
+.main_baner_video_container video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.main_baner_overlay_container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  border-radius: 16px;
+  position: absolute;
+  background: linear-gradient(90deg, #151515, #15151536 100%);
+}
+
+/* Baner text info styleing__ */
+
+.baner_text_container {
+  color: white;
+  padding-left: 20px;
+}
+
+.baner_text_container h2 {
+  font-size: 4.2rem;
+  padding: 0 750px 0 0;
+  font-weight: 700;
+  font-family: "Montserrat", sans-serif;
+}
+
+.baner_text_container p {
+  font-size: 1.1rem;
+  font-weight: 300;
+  padding: 10px 900px 30px 0;
+  font-family: "Roboto", serif;
+}
+
+.baner_text_container button {
+  padding: 8px 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: black;
+  background-color: white;
+}
+
+.baner_text_container button:active {
+  background-color: #e0e0e0;
+}
+
+/* Baner text animation styleing__ */
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.overlay_inner_container {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+/* Baner play button styleing__ */
+
+.baner_video_play_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 70px;
+  color: white;
+  position: absolute;
+  z-index: 99;
+  right: 50px;
+  bottom: 50px;
+  border-radius: 16px;
+  background-color: #ffffff33;
+}
+
+.baner_video_play_container h3 {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.baner_video_play_container p {
+  font-size: 1.2rem;
+  padding-left: 5px;
+  font-weight: 500;
+}
