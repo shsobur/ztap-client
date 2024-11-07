@@ -1,10 +1,19 @@
 import "./Navbar.css";
+import { useState } from "react";
+import { FcMenu } from "react-icons/fc";
+import { RxCross1 } from "react-icons/rx";
 import { NavLink } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 import { LuUserCircle } from "react-icons/lu";
 import { BsCartPlusFill } from "react-icons/bs";
-import logo from "../../../assets/logo.png";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleIsOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="main_navbar_outer_container">
@@ -14,40 +23,54 @@ const Navbar = () => {
           </div>
 
           <div className="main_navbar_navigation_container">
-            <div className="main_navbar_navigate_route_container">
-              <ul>
+            <div
+              id="main_navbar_navigate_route_container"
+              className={
+                isOpen
+                  ? "#main_navbar_navigate_route_container isActive"
+                  : "#main_navbar_navigate_route_container"
+              }
+            >
+              <ul onClick={handleIsOpen}>
                 <li>
-                  <NavLink>
-                    Home
-                  </NavLink>
+                  <NavLink>Home</NavLink>
                 </li>
                 <li>
-                  <NavLink>
-                    Shop
-                  </NavLink>
+                  <NavLink>Shop</NavLink>
                 </li>
                 <li>
-                  <NavLink>
-                    Contact us
-                  </NavLink>
+                  <NavLink>Contact us</NavLink>
                 </li>
                 <li>
-                  <NavLink>
-                    Dashboard
-                  </NavLink>
+                  <NavLink>Dashboard</NavLink>
                 </li>
               </ul>
             </div>
 
             <div className="main_navbar_user_info_container">
               <div className="navbar_cart_info_container">
-                <h3><BsCartPlusFill /></h3>
+                <h3>
+                  <BsCartPlusFill />
+                </h3>
                 <span>99</span>
               </div>
-              <h3><LuUserCircle /></h3>
+              <h3>
+                <LuUserCircle />
+              </h3>
+            </div>
+
+            <div onClick={handleIsOpen} className="navbar_menu_container">
+              {isOpen ? (
+                <h3>
+                  <FcMenu />
+                </h3>
+              ) : (
+                <h3>
+                  <RxCross1 />
+                </h3>
+              )}
             </div>
           </div>
-
         </div>
       </div>
     </>

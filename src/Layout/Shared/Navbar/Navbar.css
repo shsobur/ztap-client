@@ -37,10 +37,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
-.main_navbar_navigate_route_container ul {
+#main_navbar_navigate_route_container ul {
   gap: 30px;
   display: flex;
   align-items: center;
@@ -69,10 +69,98 @@
   justify-content: center;
 }
 
-.navbar_cart_info_container span{
+.navbar_cart_info_container span {
   color: white;
   border-radius: 16px;
   padding: 0 10px;
   font-weight: 600;
   background-color: black;
+}
+
+.navbar_menu_container {
+  display: none;
+  margin-left: 20px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Responsive styleing__ */
+
+@media screen and (max-width: 1280px) {
+  #main_navbar_navigate_route_container ul {
+    gap: 25px;
+    margin-right: 70px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .navbar_image_outer_container {
+    height: 60px;
+    width: 155px;
+  }
+
+  #main_navbar_navigate_route_container ul {
+    gap: 20px;
+    font-size: 1rem;
+    margin-right: 50px;
+  }
+
+  .main_navbar_user_info_container {
+    gap: 20px;
+  }
+
+  .main_navbar_user_info_container h3 {
+    font-size: 1.8rem;
+  }
+
+  .navbar_cart_info_container span {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #main_navbar_navigate_route_container ul {
+    font-size: 14px;
+    margin-right: 40px;
+  }
+
+  .main_navbar_user_info_container h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .navbar_menu_container {
+    display: block;
+  }
+
+  #main_navbar_navigate_route_container ul {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    height: calc(100vh - 60px);
+    width: 50%;
+    padding: 10px 20px;
+    top: 60px;
+    right: -40px;
+    background-color: #ffffff;
+    transition: 0.4s ease-in-out;
+    border-top: 2px dashed black;
+  }
+  #main_navbar_navigate_route_container.isActive ul {
+    right: -500px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_navbar_user_info_container h3 {
+    font-size: 1.5rem;
+  }
+
+  .navbar_menu_container {
+    margin-left: 10px;
+  }
 }
