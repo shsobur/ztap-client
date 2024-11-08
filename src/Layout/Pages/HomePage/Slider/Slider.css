@@ -1,0 +1,11 @@
+.main_slider_container {
+  padding: 20px 0;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: #00000026 1.95px 1.95px 2.6px;
+}
+
+.marquee_img_container img {
+  width: 350px;
+  padding-left: 200px;
+}

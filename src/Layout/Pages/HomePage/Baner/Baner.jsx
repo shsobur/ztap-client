@@ -1,8 +1,8 @@
 import "./Baner.css";
-import banerVideo from "../../../assets/baner-video.mp4";
-import { FiPlayCircle } from "react-icons/fi";
 import { useRef, useState } from "react";
+import { FiPlayCircle } from "react-icons/fi";
 import { LuPauseCircle } from "react-icons/lu";
+import banerVideo from "../../../../assets/baner-video.mp4";
 
 const Baner = () => {
   const videoRef = useRef(null);
