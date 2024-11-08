@@ -1,4 +1,5 @@
 import Baner from "../Baner/Baner";
+import NewItem from "../NewItem/NewItem";
 import Slider from "../Slider/Slider";
 
 const HomePageLayout = () => {
@@ -7,6 +8,7 @@ const HomePageLayout = () => {
       <div className="main_container">
         <Baner></Baner>
         <Slider></Slider>
+        <NewItem></NewItem>
       </div>
     </>
   );

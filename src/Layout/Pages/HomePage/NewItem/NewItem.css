@@ -1,0 +1,18 @@
+.main_new_item_outer_container {
+  margin-top: 100px;
+}
+
+.new_item_title_container {
+  color: #151515;
+  text-align: center;
+  font-family: "Montserrat", serif;
+}
+
+.new_item_title_container h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.main_new_item_cart_outer_container {
+  margin-top: 100px;
+}
