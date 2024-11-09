@@ -6,7 +6,7 @@ import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
 // Swiper style__
 import "swiper/css";
 import "swiper/css/navigation";
-import NewItemCart from "../../../Components/NewItemCart/NewItemCart";
+import AllProductCards from "../../../Components/AllProductCards/AllProductCards";
 
 const NewItem = () => {
   const axiosPublic = UseAxiosPublic();
@@ -19,8 +19,6 @@ const NewItem = () => {
     },
   });
 
-  console.log(newItems);
-
   return (
     <>
       <div className="main_container">
@@ -32,17 +30,21 @@ const NewItem = () => {
           <div className="main_new_item_cart_outer_container">
             <Swiper
               slidesPerView={3}
-              spaceBetween={30}
+              spaceBetween={10}
               navigation={true}
               modules={[Navigation]}
               className="mySwiper"
             >
               {newItems.map((newItem) => (
                 <SwiperSlide key={newItem._id}>
-                  <NewItemCart newItem={newItem}></NewItemCart>
+                  <AllProductCards cartItem={newItem}></AllProductCards>
                 </SwiperSlide>
               ))}
             </Swiper>
+          </div>
+
+          <div className="new_item_button_container">
+            <button>View All</button>
           </div>
         </div>
       </div>
