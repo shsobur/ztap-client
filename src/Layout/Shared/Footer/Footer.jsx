@@ -5,6 +5,8 @@ import { PiGithubLogoDuotone } from "react-icons/pi";
 import { CiFacebook, CiInstagram, CiTwitter } from "react-icons/ci";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <>
       <div className="main_container">
@@ -64,13 +66,28 @@ const Footer = () => {
           </div>
 
           <div className="footer_down_section_container">
-              <h2>Shop.co © 2000-2023, All Rights Reserved</h2>
+              <h2>Ztap © 2001-{currentYear}, All Rights Reserved</h2>
               <div className="footer_card_image_container">
                 <img src={card} alt="image" />
               </div>
           </div>
 
+          <div className="main_news_letter_section_container">
+          <div className="news_letter_inner_container">
+
+            <div>
+              <h2>STAY UPTO DATE ABOUT<br/> OUR LATEST OFFERS</h2>
+            </div>
+            <div className="news_letter_input_section_container">
+              <input type="email" name="email" placeholder="Enter your email address" />
+              <button>Subscribe to Newsletter</button>
+            </div>
+
+          </div>
         </div>
+
+        </div>
+
       </div>
     </>
   );
