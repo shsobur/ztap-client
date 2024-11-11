@@ -13,25 +13,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const TopSell = () => {
   const axiosPublic = UseAxiosPublic();
 
-  const {data: topSells = [], isLoading} = useQuery({
+  const { data: topSells = [], isLoading } = useQuery({
     queryKey: ["topSell"],
     queryFn: async () => {
-      const {data} = await axiosPublic.get("/topSell");
+      const { data } = await axiosPublic.get("/topSell");
       return data;
-    }
-  })
+    },
+  });
 
   return (
     <>
       <div className="main_container">
         <div className="main_top_sell_outer_container">
-          
           <div className="top_sell_title_container">
             <h2>TOP SELL</h2>
           </div>
 
           <div className="main_top_sell_cart_outer_container">
-          {isLoading ? (
+            {isLoading ? (
               <LoadingSpinner></LoadingSpinner>
             ) : (
               <Swiper
@@ -53,7 +52,6 @@ const TopSell = () => {
           <div className="top_sell_button_container">
             <button>View All</button>
           </div>
-
         </div>
       </div>
     </>

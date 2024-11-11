@@ -32,3 +32,79 @@
   border-radius: 62px;
   border: 2px solid #0000001a;
 }
+
+/* Responsive styleing__ */
+
+@media screen and (max-width: 1280px) {
+  .top_sell_title_container h2 {
+    font-size: 2.8rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .top_sell_title_container h2 {
+    font-size: 2.6rem;
+  }
+
+  .top_sell_button_container {
+    margin-top: 30px;
+  }
+
+  .top_sell_button_container button {
+    padding: 8px 60px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_top_sell_cart_outer_container {
+    padding: 0 10px;
+    margin-top: 90px;
+  }
+
+  .top_sell_title_container h2 {
+    font-size: 2.4rem;
+  }
+
+  .top_sell_button_container {
+    margin-top: 20px;
+  }
+
+  .top_sell_button_container button {
+    padding: 6px 40px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main_top_sell_cart_outer_container {
+    padding: 0 5px;
+    margin-top: 80px;
+  }
+
+  .top_sell_title_container h2 {
+    font-size: 2.2rem;
+  }
+
+  .top_sell_button_container {
+    margin-top: 10px;
+  }
+
+  .top_sell_button_container button {
+    font-size: 1rem;
+    padding: 6px 40px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_top_sell_cart_outer_container {
+    margin-top: 70px;
+  }
+
+  .top_sell_title_container h2 {
+    font-size: 1.8rem;
+  }
+
+  .top_sell_button_container button {
+    font-size: 14px;
+    padding: 5px 30px;
+  }
+}
