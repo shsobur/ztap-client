@@ -1,6 +1,7 @@
 import Baner from "../Baner/Baner";
 import NewItem from "../NewItem/NewItem";
 import Slider from "../Slider/Slider";
+import TopSell from "../TopSell/TopSell";
 
 const HomePageLayout = () => {
   return (
@@ -9,6 +10,7 @@ const HomePageLayout = () => {
         <Baner></Baner>
         <Slider></Slider>
         <NewItem></NewItem>
+        <TopSell></TopSell>
       </div>
     </>
   );

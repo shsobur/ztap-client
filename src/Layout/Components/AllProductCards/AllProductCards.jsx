@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import "./AllProductCards.css";
+import PropTypes from "prop-types";
 
 const AllProductCards = ({ cartItem }) => {
   return (
