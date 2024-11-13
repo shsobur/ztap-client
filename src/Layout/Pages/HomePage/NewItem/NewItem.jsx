@@ -40,7 +40,6 @@ const NewItem = () => {
     <>
       <div className="main_container">
         <div className="main_new_item_outer_container">
-
           <div className="new_item_title_container">
             <h2>NEW ARRIVALS</h2>
           </div>
@@ -51,7 +50,7 @@ const NewItem = () => {
             ) : (
               <Swiper
                 slidesPerView={
-                  screenWidth > 768 ? 3.2 : screenWidth > 475 ? 2.2 : 1.2
+                  screenWidth > 768 ? 3.3 : screenWidth > 475 ? 2.2 : 1.2
                 }
                 spaceBetween={10}
                 className="mySwiper"

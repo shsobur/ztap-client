@@ -15,11 +15,9 @@
 
 .main_new_item_cart_outer_container {
   margin-top: 100px;
-  margin-bottom: 30px;
 }
 
 .new_item_button_container {
-  margin-top: 50px;
   text-align: center;
   border-bottom: 2px solid #0000001a;
 }
@@ -37,11 +35,19 @@
 
 @media screen and (max-width: 1280px) {
   .main_new_item_outer_container {
-    margin-top: 90px; 
+    margin-top: 90px;
+  }
+
+  .main_new_item_cart_outer_container {
+    margin-top: 80px;
   }
 
   .new_item_title_container h2 {
     font-size: 2.8rem;
+  }
+
+  .new_item_button_container {
+    margin-top: 50px;
   }
 }
 
@@ -50,12 +56,12 @@
     margin-top: 80px;
   }
 
-  .new_item_title_container h2 {
-    font-size: 2.6rem;
+  .main_new_item_cart_outer_container {
+    margin-top: 70px;
   }
 
-  .new_item_button_container {
-    margin-top: 30px;
+  .new_item_title_container h2 {
+    font-size: 2.6rem;
   }
 
   .new_item_button_container button {
@@ -70,10 +76,7 @@
 
   .main_new_item_cart_outer_container {
     padding: 0 10px;
-  }
-
-  .main_new_item_cart_outer_container {
-    margin-top: 90px;
+    margin-top: 60px;
   }
 
   .new_item_title_container h2 {
@@ -81,11 +84,11 @@
   }
 
   .new_item_button_container {
-    margin-top: 20px;
+    margin-top: 40px;
   }
 
   .new_item_button_container button {
-    padding: 6px 40px;
+    padding: 6px 50px;
   }
 }
 
@@ -96,29 +99,22 @@
 
   .main_new_item_cart_outer_container {
     padding: 0 5px;
-  }
-
-  .main_new_item_cart_outer_container {
-    margin-top: 60px;
+    margin-top: 50px;
   }
 
   .new_item_title_container h2 {
     font-size: 2.2rem;
   }
 
-  .new_item_button_container {
-    margin-top: 10px;
-  }
-
   .new_item_button_container button {
     font-size: 1rem;
-    padding: 6px 40px;
+    padding: 5px 40px;
   }
 }
 
 @media screen and (max-width: 475px) {
   .main_new_item_outer_container {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 
   .main_new_item_cart_outer_container {
@@ -127,6 +123,10 @@
 
   .new_item_title_container h2 {
     font-size: 1.8rem;
+  }
+
+  .new_item_button_container {
+    margin-top: 30px;
   }
 
   .new_item_button_container button {
