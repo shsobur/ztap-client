@@ -36,12 +36,24 @@
 /* Responsive styleing__ */
 
 @media screen and (max-width: 1280px) {
+  .main_top_sell_outer_container {
+    margin-top: 90px;
+  }
+
   .top_sell_title_container h2 {
     font-size: 2.8rem;
   }
 }
 
 @media screen and (max-width: 1024px) {
+  main_top_sell_outer_container {
+    margin-top: 80px;
+  }
+
+  .main_top_sell_cart_outer_container {
+    margin-top: 90px;
+  }
+
   .top_sell_title_container h2 {
     font-size: 2.6rem;
   }
@@ -56,9 +68,13 @@
 }
 
 @media screen and (max-width: 768px) {
+  .main_top_sell_outer_container {
+    margin-top: 70px;
+  }
+
   .main_top_sell_cart_outer_container {
     padding: 0 10px;
-    margin-top: 90px;
+    margin-top: 80px;
   }
 
   .top_sell_title_container h2 {
@@ -75,9 +91,13 @@
 }
 
 @media screen and (max-width: 640px) {
+  .main_top_sell_outer_container {
+    margin-top: 60px;
+  }
+
   .main_top_sell_cart_outer_container {
     padding: 0 5px;
-    margin-top: 80px;
+    margin-top: 60px;
   }
 
   .top_sell_title_container h2 {
@@ -95,8 +115,12 @@
 }
 
 @media screen and (max-width: 475px) {
+  .main_top_sell_outer_container {
+    margin-top: 40px;
+  }
+
   .main_top_sell_cart_outer_container {
-    margin-top: 70px;
+    margin-top: 40px;
   }
 
   .top_sell_title_container h2 {

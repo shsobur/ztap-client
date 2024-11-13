@@ -6,12 +6,14 @@ import AllProductCards from "../../../Components/AllProductCards/AllProductCards
 // Swiper js__
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const NewItem = () => {
   const axiosPublic = UseAxiosPublic();
+  const [screenWidth, setScreenWidth] = useState(null);
 
+  // Geting new product__
   const { data: newItems = [], isLoading } = useQuery({
     queryKey: ["newItem"],
     queryFn: async () => {
@@ -20,10 +22,25 @@ const NewItem = () => {
     },
   });
 
+  // Geting current screen width__
+  useEffect(() => {
+    const handleScreenWidth = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    if (window !== "undefined") {
+      handleScreenWidth();
+
+      window.addEventListener("resize", handleScreenWidth);
+      return () => window.removeEventListener("resize", handleScreenWidth);
+    }
+  }, []);
+
   return (
     <>
       <div className="main_container">
         <div className="main_new_item_outer_container">
+
           <div className="new_item_title_container">
             <h2>NEW ARRIVALS</h2>
           </div>
@@ -33,10 +50,10 @@ const NewItem = () => {
               <LoadingSpinner></LoadingSpinner>
             ) : (
               <Swiper
-                slidesPerView={3}
+                slidesPerView={
+                  screenWidth > 768 ? 3.2 : screenWidth > 475 ? 2.2 : 1.2
+                }
                 spaceBetween={10}
-                navigation={true}
-                modules={[Navigation]}
                 className="mySwiper"
               >
                 {newItems.map((newItem) => (

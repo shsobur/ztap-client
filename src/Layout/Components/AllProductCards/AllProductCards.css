@@ -20,7 +20,7 @@
   width: 100%;
   cursor: pointer;
   border-radius: 8px;
-  border: 2px solid #000000;
+  border: 1px solid #d4d4d4;
 }
 
 .ptodict_cart_image_container {
@@ -102,12 +102,10 @@
 
 @media screen and (max-width: 1024px) {
   .swiper-button-prev::after {
-    font-size: 32px;
     margin-top: 370px;
   }
 
   .swiper-button-next::after {
-    font-size: 32px;
     margin-top: 370px;
   }
 
@@ -142,12 +140,10 @@
 
 @media screen and (max-width: 768px) {
   .swiper-button-prev::after {
-    font-size: 32px;
     margin-top: 320px;
   }
 
   .swiper-button-next::after {
-    font-size: 32px;
     margin-top: 320px;
   }
 
@@ -183,12 +179,10 @@
 
 @media screen and (max-width: 640px) {
   .swiper-button-prev::after {
-    font-size: 30px;
     margin-top: 270px;
   }
 
   .swiper-button-next::after {
-    font-size: 30px;
     margin-top: 270px;
   }
 
@@ -224,47 +218,44 @@
 
 @media screen and (max-width: 475px) {
   .all_cart_section_outer_container {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
   }
 
   .swiper-button-prev::after {
-    font-size: 25px;
-    margin-top: 250px;
+    margin-top: 200px;
   }
 
   .swiper-button-next::after {
-    font-size: 25px;
-    margin-top: 250px;
+    font-size: 2px;
+    margin-top: 200px;
   }
 
   .ptodict_cart_image_container {
-    height: 80px;
+    height: 120px;
   }
 
   .product_cart_header_container h2 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .product_cart_header_container h4 {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .product_cart_footer_container {
-    gap: 0px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
 
   .product_cart_footer_container h2 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .product_cart_footer_container h3 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .product_cart_footer_container h4 {
     font-size: 10px;
-    padding: 1px 8px;
+    padding: 2px 8px;
   }
 }
