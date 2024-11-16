@@ -4,6 +4,7 @@
   z-index: 9999;
   position: fixed;
   background-color: white;
+  border-bottom: 2px solid #000000;
 }
 
 .main_navbar_inner_container {
@@ -13,7 +14,7 @@
   margin: 0 auto;
   max-width: 1536px;
   background-color: #ffffff;
-  border-bottom: 2px solid black;
+
 }
 
 /* Styleing the bavbar contant__ */

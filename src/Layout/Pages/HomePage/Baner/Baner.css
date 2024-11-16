@@ -1,7 +1,8 @@
 .main_baner_outer_container {
   height: calc(90vh - 72px);
-  width: 100%;
   position: relative;
+  max-width: 1920px;
+  margin: auto;
   margin-top: 72px;
 }
 
@@ -37,7 +38,7 @@
 
 .baner_text_container h2 {
   font-size: 4rem;
-  padding-right: 750px;
+  padding-right: 930px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
@@ -45,7 +46,7 @@
 .baner_text_container p {
   font-size: 1.1rem;
   font-weight: 300;
-  padding: 10px 900px 30px 0;
+  padding: 20px 1100px 40px 0;
   font-family: "Roboto", serif;
 }
 
@@ -109,6 +110,17 @@
 }
 
 /* Responsive styleing__ */
+@media screen and (max-width: 1536px) {
+  .baner_text_container h2 {
+    padding-right: 700px;
+  }
+
+  .baner_text_container p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding: 20px 800px 40px 0;
+  }
+}
 
 @media screen and (max-width: 1280px) {
   .baner_text_container h2 {

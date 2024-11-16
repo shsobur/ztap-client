@@ -1,4 +1,6 @@
 .main_slider_container {
+  max-width: 1920px;
+  margin: auto;
   padding: 20px 0;
   cursor: pointer;
   background-color: white;

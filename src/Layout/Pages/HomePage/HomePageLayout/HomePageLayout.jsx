@@ -7,7 +7,7 @@ import TopSell from "../TopSell/TopSell";
 const HomePageLayout = () => {
   return (
     <>
-      <div className="main_container">
+      <div>
         <Baner></Baner>
         <Slider></Slider>
         <NewItem></NewItem>

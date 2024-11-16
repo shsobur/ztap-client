@@ -12,7 +12,7 @@ import img7 from "../../../../assets/slider7.png";
 const Slider = () => {
   return (
     <>
-      <div className="main_container">
+      <div>
         <div className="main_slider_container">
           <Marquee
             speed={100}
