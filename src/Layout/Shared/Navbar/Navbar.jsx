@@ -2,7 +2,7 @@ import "./Navbar.css";
 import { useState } from "react";
 import { FcMenu } from "react-icons/fc";
 import { RxCross1 } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { LuUserCircle } from "react-icons/lu";
 import { BsCartPlusFill } from "react-icons/bs";
@@ -57,6 +57,11 @@ const Navbar = () => {
               <h3>
                 <LuUserCircle />
               </h3>
+              <p>
+                <Link to="signUp">
+                  SIGN IN
+                </Link>
+              </p>
             </div>
 
             <div onClick={handleIsOpen} className="navbar_menu_container">

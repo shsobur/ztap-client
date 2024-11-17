@@ -64,6 +64,13 @@
   font-size: 2rem;
 }
 
+.main_navbar_user_info_container p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: "Roboto", serif;
+}
+
 .navbar_cart_info_container {
   display: flex;
   align-items: center;

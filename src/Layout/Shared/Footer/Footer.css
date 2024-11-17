@@ -6,7 +6,7 @@
 }
 
 .footer_upper_section_container {
-  max-width: 1320px;
+  max-width: 1536px;
   margin: auto;
   gap: 50px;
   display: flex;
@@ -83,7 +83,7 @@
 /* Foter down section container__ */
 
 .footer_down_section_container {
-  max-width: 1320px;
+  max-width: 1536px;
   margin: auto;
   display: flex;
   align-items: flex-start;

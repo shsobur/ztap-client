@@ -50,7 +50,7 @@ const TopSell = () => {
             ) : (
               <Swiper
                 slidesPerView={
-                  screenWidth > 768 ? 3.2 : screenWidth > 475 ? 2.2 : 1.2
+                  screenWidth > 768 ? 3.3 : screenWidth > 475 ? 2.2 : 1.2
                 }
                 spaceBetween={10}
                 className="mySwiper"
