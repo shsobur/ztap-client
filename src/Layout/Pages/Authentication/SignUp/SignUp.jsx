@@ -41,7 +41,6 @@ const SignUp = () => {
     })
     setImage(res.data.data.display_url)
   }
-
   
 
   return (
