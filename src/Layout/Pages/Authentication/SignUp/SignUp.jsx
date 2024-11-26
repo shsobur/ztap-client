@@ -1,256 +1,331 @@
 import "./SignUp.css";
 import logo from "../../../../assets/logoFooter.png";
-// Swiper js__
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import { useRef, useState } from "react";
-import { BsEmojiHeartEyes } from "react-icons/bs";
-import { PiSmileyXEyesDuotone } from "react-icons/pi";
+
+import { useContext, useState } from "react";
+// import { BsEmojiHeartEyes } from "react-icons/bs";
+// import { PiSmileyXEyesDuotone } from "react-icons/pi";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
+import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // Image_hosting_key__
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const SignUp = () => {
-  const prevRef = useRef(null);
-  const nextRef = useRef(null);
-  const [firstPassIcon, setFirstPassIcon] = useState(false);
-  const [secondPassIcon, setSecondPassIcon] = useState(false);
-  const [image, setImage] = useState(null);
+  const navigate = useNavigate();
   const axiosPublic = UseAxiosPublic();
-
-  const hadleFristPassIcon = () => {
-    setFirstPassIcon(!firstPassIcon);
-  };
-
-  const hadlesSecondPassIcon = () => {
-    setSecondPassIcon(!secondPassIcon);
-  };
+  const [image, setImage] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const { signUpUser, loading } = useContext(AuthContext);
 
   // Hosting image__
 
   const handleImageHosting = async (e) => {
-    const imageFile = {image: e.target.files[0]}
+    const imageFile = { image: e.target.files[0] };
+    setUploading(true);
     const res = await axiosPublic.post(image_hosting_api, imageFile, {
       headers: {
-        "content-type" : "multipart/form-data"
-      }
-    })
-    setImage(res.data.data.display_url)
-  }
-  
+        "content-type": "multipart/form-data",
+      },
+    });
+    setImage(res.data.data.display_url);
+    setUploading(false);
+  };
+
+  // Handle SignUp form__
+  const {
+    watch,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    // Form data__
+    const firstName = data.firstName.trim();
+    const lastName = data.lastName.trim();
+    const fullName = firstName + " " + lastName;
+    const userName = fullName.trim();
+    const userEmail = data.email.trim();
+    const userPassword = data.password.trim();
+    const userNumber = data.number.trim();
+
+    const userInfo = {
+      userName,
+      userEmail,
+      userPassword,
+      userNumber,
+      image,
+    };
+
+    // Sign Up call__
+    signUpUser(userEmail, userPassword)
+      .then(() => {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "bottom-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          },
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("Singed Up error:", error);
+      });
+
+    console.log(userInfo);
+  };
 
   return (
     <>
-      <div className="main_signUp_container">
-        <div className="main_signUp_outer_container">
-          <div className="main_signUp_inner_container">
-            <div className="left_signUp_main_container">
-              <div className="signUp_image_container">
-                <img src={logo} alt="logo" />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="main_signUp_container">
+          <div className="main_signUp_outer_container">
+            <div className="main_signUp_inner_container">
+              <div className="left_signUp_main_container">
+                <div className="signUp_image_container">
+                  <img src={logo} alt="logo" />
+                </div>
+
+                <h2>Create Your New Account</h2>
+                <p>
+                  Thank you for joining us. As a member! you will enjoy
+                  exclusive deals, personalized recommendations, and special
+                  discounts. Explore our diverse collection of sneakers, formals
+                  etc. to find your perfect pair Step ahead with Ztep!
+                </p>
               </div>
 
-              <h2>Create Your New Account</h2>
-              <p>
-                Thank you for joining us. As a member! you will enjoy exclusive
-                deals, personalized recommendations, and special discounts.
-                Explore our diverse collection of sneakers, formals etc. to find
-                your perfect pair Step ahead with Ztep!
-              </p>
-            </div>
+              <div className="right_signUp_main_container">
+                <div className="max-w-screen-lg mx-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="text"
+                        name="firstName"
+                        {...register("firstName")}
+                        className="block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
 
-            <div className="right_signUp_main_container">
-              <Swiper
-                onSwiper={(Swiper) => {
-                  Swiper.params.navigation.prevEl = prevRef.current;
-                  Swiper.params.navigation.nextEl = nextRef.current;
-                  Swiper.navigation.init();
-                  Swiper.navigation.update();
-                }}
-                navigation={{
-                  nextEl: ".custom_next",
-                  prevEl: ".custom_prev",
-                }}
-                pagination={{ type: "progressbar" }}
-                modules={[Pagination, Navigation]}
-                allowTouchMove={false}
-                className="mySwiper"
-              >
-                <form>
-                  <SwiperSlide>
-                    <div className="form_name_container">
-                      <h2>Enter Your Full Name_</h2>
-
-                      <div className="form_name_inner_container">
-                        <input
-                          type="text"
-                          name="firstName"
-                          placeholder="First name"
-                        />
-                        <input
-                          type="text"
-                          name="lastName"
-                          placeholder="Last name (optional)"
-                        />
-                      </div>
+                      <label
+                        htmlFor="firstName"
+                        className="peer-focus:font-medium absolute text-lg text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        First name
+                      </label>
                     </div>
-                  </SwiperSlide>
 
-                  <SwiperSlide>
-                    <div className="form_barth_container">
-                      <h2>Enter Your Barth Information_</h2>
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="text"
+                        name="lastName"
+                        {...register("lastName")}
+                        className="block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        required
+                      />
 
-                      <div className="form_container">
-                        <div className="dropdown_group">
-                          <input
-                            className="dropdown"
-                            type="text"
-                            name="month"
-                            placeholder="Month"
-                          />
+                      <label
+                        htmlFor="lastName"
+                        className="peer-focus:font-medium absolute text-lg text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        Last name
+                      </label>
+                    </div>
+                  </div>
 
-                          <input
-                            className="dropdown"
-                            type="text"
-                            name="day"
-                            placeholder="Day"
-                          />
+                  <div className="relative z-0 w-full mb-5 group">
+                    <input
+                      type="email"
+                      name="email"
+                      {...register("email")}
+                      className="block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=" "
+                      required
+                    />
 
-                          <input
-                            className="dropdown"
-                            type="text"
-                            name="year"
-                            placeholder="Year"
-                          />
-                        </div>
+                    <label
+                      htmlFor="email"
+                      className="peer-focus:font-medium absolute text-lg text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >
+                      Email address
+                    </label>
+                  </div>
 
-                        <div className="gender_group">
-                          <label htmlFor="gender" className="label"></label>
+                  <div className="relative z-0 w-full mb-5 group">
+                    <input
+                      type="password"
+                      name="password"
+                      {...register("password", {
+                        required: true,
+                        minLength: 8,
+                        pattern: /^(?=.*[a-z])(?=.*[A-Z]).*$/,
+                      })}
+                      className="block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=" "
+                      required
+                    />
 
-                          <select id="gender" className="dropdown">
-                            <option disabled>Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Others</option>
-                          </select>
-                        </div>
+                    <label
+                      htmlFor="password"
+                      className="peer-focus:font-medium absolute text-lg text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >
+                      Password
+                    </label>
 
-                        <a
-                          target="main"
-                          href="https://support.google.com/accounts/answer/1733224?hl=en"
-                          className="info_link"
+                    <div>
+                      {errors.password?.type === "minLength" && (
+                        <span className="text-sm text-red-500">
+                          Password should be at least 8 characters
+                        </span>
+                      )}
+                    </div>
+
+                    <div>
+                      {errors.password?.type === "pattern" && (
+                        <span className="text-sm text-red-500">
+                          Use at least one uppercase(A-Z) and lowercase(a-z)
+                          character
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="relative z-0 w-full mb-5 group">
+                    <input
+                      type="password"
+                      name="confirmPassword"
+                      {...register("confirmPassword", {
+                        required: true,
+                        validate: (value) => {
+                          if (watch("password") !== value) {
+                            return "Password do not match";
+                          }
+                        },
+                      })}
+                      className="block py-2.5 px-0 w-full text-base text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=" "
+                      required
+                    />
+
+                    <label
+                      htmlFor="confirmPassword"
+                      className="peer-focus:font-medium absolute text-lg text-gray-700 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >
+                      Confirm password
+                    </label>
+
+                    <div>
+                      {errors.confirmPassword && (
+                        <span className="text-sm text-red-500">
+                          Both password must match!
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div className="relative z-0 w-full mb-5 group">
+                        <select
+                          name="countryCode"
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          required
                         >
-                          Why we ask for birthday and gender?
-                        </a>
+                          <option value="" disabled selected hidden>
+                            Country code 🔽
+                          </option>
+                          <option value="+1">+1 (USA)</option>
+                          <option value="+44">+44 (UK)</option>
+                          <option value="+91">+91 (India)</option>
+                          <option value="+880">+880 (Bangladesh)</option>
+                          <option value="+81">+81 (Japan)</option>
+                        </select>
                       </div>
-                    </div>
-                  </SwiperSlide>
 
-                  <SwiperSlide>
-                    <div className="form_email_container">
-                      <h2>Enter Your Email Address__</h2>
-
-                      <div>
+                      <div className="relative z-0 w-full mb-5 group">
                         <input
-                          type="email"
-                          name="email"
-                          placeholder="ztap@example.com"
+                          type="tel"
+                          name="number"
+                          {...register("number")}
+                          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                          placeholder=" "
+                          pattern="[0-9]{10}"
+                          required
                         />
+
+                        <label
+                          htmlFor="number"
+                          className="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >
+                          Mobile Number
+                        </label>
                       </div>
                     </div>
-                  </SwiperSlide>
 
-                  <SwiperSlide>
-                    <div className="form_password_container">
-                      <h2>Enter Your Password__</h2>
+                    <div className="relative z-0 w-full mb-5 group">
+                      <input
+                        type="file"
+                        name="image"
+                        onChange={handleImageHosting}
+                        className="block py-5 px-0 w-full text-base text-gray-900 bg-transparent border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                      />
 
-                      <div>
-                        <div className="password_input_container">
-                          <input
-                            type={firstPassIcon ? "text" : "password"}
-                            name="password"
-                            placeholder="Password"
-                          />
-                          <h3
-                            onClick={hadleFristPassIcon}
-                            id="password_show_icon"
-                          >
-                            {firstPassIcon ? (
-                              <BsEmojiHeartEyes />
-                            ) : (
-                              <PiSmileyXEyesDuotone />
-                            )}
-                          </h3>
-                        </div>
-
-                        <br />
-
-                        <div className="password_input_container">
-                          <input
-                            type={secondPassIcon ? "text" : "password"}
-                            name="password"
-                            placeholder="Confirm password"
-                          />
-                          <h3
-                            onClick={hadlesSecondPassIcon}
-                            id="password_show_icon"
-                          >
-                            {secondPassIcon ? (
-                              <BsEmojiHeartEyes />
-                            ) : (
-                              <PiSmileyXEyesDuotone />
-                            )}
-                          </h3>
-                        </div>
-                      </div>
+                      <label
+                        htmlFor="image"
+                        className="peer-focus:font-medium font-medium absolute text-2xl text-blue-600 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      >
+                        {uploading ? (
+                          "Uploading..."
+                        ) : (
+                          <p>
+                            Upload your image
+                            <span className="text-gray-400"> (optional)</span>
+                          </p>
+                        )}
+                      </label>
                     </div>
-                  </SwiperSlide>
+                  </div>
 
-                  <SwiperSlide>
-                    <div className="form_image_container">
-                      <h2>Almost Finished!</h2>
-                      <h3>
-                        Choose Your Picture__<span>(optional)</span>
-                      </h3>
-
-                      <div className="form_image_outer_container">
-                        <div className="from_image_inner_container">
-                          <img
-                            src={image}
-                            alt="image"
-                          />
-                        </div>
-
-                        <div className="from_fileUp_container">
-                          <input
-                            type="file"
-                            name="image"
-                            onChange={handleImageHosting}
-                          />
-                          {/* <button onClick={handleImageUpload}>Upload</button> */}
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                </form>
-              </Swiper>
-
-              <div>
-                <button ref={prevRef} className="button_1">
-                  Previse
-                </button>
-
-                <button ref={nextRef} className="button_2">
-                  Next
-                </button>
+                  <div className="w-full flex items-center justify-end">
+                    {uploading ? (
+                      <button className="text-gray-300 bg-blue-900 cursor-not-allowed hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                        Submit
+                      </button>
+                    ) : loading ? (
+                      <button className="text-gray-300 bg-blue-900 cursor-not-allowed hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                        <div className="w-4 h-4 border-4 border-dashed rounded-full animate-spin"></div>
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                      >
+                        Submit
+                      </button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </>
   );
 };
