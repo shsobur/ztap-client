@@ -33,7 +33,7 @@ const Navbar = () => {
             >
               <ul onClick={handleIsOpen}>
                 <li>
-                  <NavLink>Home</NavLink>
+                  <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
                   <NavLink>Shop</NavLink>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <LuUserCircle />
               </h3>
               <p>
-                <Link to="signUp">
+                <Link to="/signIn">
                   SIGN IN
                 </Link>
               </p>

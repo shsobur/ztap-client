@@ -94,6 +94,7 @@ const SignUp = () => {
         <div className="main_signUp_container">
           <div className="main_signUp_outer_container">
             <div className="main_signUp_inner_container">
+
               <div className="left_signUp_main_container">
                 <div className="signUp_image_container">
                   <img src={logo} alt="logo" />
@@ -109,6 +110,7 @@ const SignUp = () => {
               </div>
 
               <div className="right_signUp_main_container">
+                
                 <div className="max-w-screen-lg mx-auto">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="relative z-0 w-full mb-5 group">
