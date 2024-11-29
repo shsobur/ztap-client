@@ -21,15 +21,19 @@ const SignUp = () => {
   const { signUpUser, loading } = useContext(AuthContext);
 
   // Hosting image__
-
   const handleImageHosting = async (e) => {
     const imageFile = { image: e.target.files[0] };
     setUploading(true);
-    const res = await axiosPublic.post(image_hosting_api, imageFile, {
-      headers: {
-        "content-type": "multipart/form-data",
-      },
-    });
+    const res = await axiosPublic
+      .post(image_hosting_api, imageFile, {
+        headers: {
+          "content-type": "multipart/form-data",
+        },
+      })
+      .catch((error) => {
+        console.log("image upload failed", error);
+        setUploading(false);
+      });
     setImage(res.data.data.display_url);
     setUploading(false);
   };
@@ -51,18 +55,27 @@ const SignUp = () => {
     const userEmail = data.email.trim();
     const userPassword = data.password.trim();
     const userNumber = data.number.trim();
+    const userRole = "buyer";
 
     const userInfo = {
       userName,
       userEmail,
-      userPassword,
       userNumber,
+      userRole,
       image,
     };
 
     // Sign Up call__
     signUpUser(userEmail, userPassword)
       .then(() => {
+        // Post user to db__
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.acknowledged) {
+            console.log({ message: "User created successfuly" });
+          }
+        });
+
+        // Aleart__
         const Toast = Swal.mixin({
           toast: true,
           position: "bottom-end",
@@ -84,8 +97,6 @@ const SignUp = () => {
       .catch((error) => {
         console.log("Singed Up error:", error);
       });
-
-    console.log(userInfo);
   };
 
   return (
@@ -239,7 +250,8 @@ const SignUp = () => {
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
                       <div className="relative z-0 w-full mb-5 group">
                         <select
                           name="countryCode"
@@ -275,6 +287,7 @@ const SignUp = () => {
                           Mobile Number
                         </label>
                       </div>
+
                     </div>
 
                     <div className="relative z-0 w-full mb-5 group">
@@ -308,8 +321,9 @@ const SignUp = () => {
                         Submit
                       </button>
                     ) : loading ? (
-                      <button className="text-gray-300 bg-blue-900 cursor-not-allowed hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
+                      <button className="text-gray-300 flex items-center justify-center gap-1 bg-blue-900 cursor-not-allowed hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">
                         <div className="w-4 h-4 border-4 border-dashed rounded-full animate-spin"></div>
+                        <p>Working...</p>
                       </button>
                     ) : (
                       <button

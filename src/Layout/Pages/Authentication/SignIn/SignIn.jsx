@@ -136,8 +136,9 @@ const SignIn = () => {
                     {loading ? (
                       <button
                         type="submit"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        className="text-white flex items-center justify-center gap-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                       >
+                        <p>Working...</p>
                         <div className="w-4 h-4 border-4 border-dashed rounded-full animate-spin"></div>
                       </button>
                     ) : (

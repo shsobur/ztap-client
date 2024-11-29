@@ -1,17 +1,20 @@
 import "./Navbar.css";
-import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 import { FcMenu } from "react-icons/fc";
 import { RxCross1 } from "react-icons/rx";
-import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import { useContext, useState } from "react";
 import { LuUserCircle } from "react-icons/lu";
 import { BsCartPlusFill } from "react-icons/bs";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
+import useUserData from "../../Hooks/userData/useUserData";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const userData = useUserData();
+  const userImage = userData.image;
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
@@ -74,15 +77,33 @@ const Navbar = () => {
             </div>
 
             <div className="main_navbar_user_info_container">
+
               <div className="navbar_cart_info_container">
                 <h3>
                   <BsCartPlusFill />
                 </h3>
                 <span>99</span>
               </div>
-              <h3>
-                <LuUserCircle />
-              </h3>
+              
+              <div title={userData.userEmail} className="cursor-pointer">
+                {user && (
+                  <div>
+                    {userImage === null ? (
+                      <h3>
+                        <LuUserCircle />
+                      </h3>
+                    ) : (
+                      <div className="border-black border-2 rounded-full">
+                        <img
+                          className="h-11 w-11 rounded-full"
+                          src={userImage}
+                          alt="user"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
 
               <p>
                 {user ? (
