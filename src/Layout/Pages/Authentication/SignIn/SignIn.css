@@ -28,6 +28,7 @@
 
 .left_signIn_main_container {
   width: 40%;
+  height: auto;
   padding: 0 20px 0px 0px;
   /* border: 2px solid tomato; */
 }

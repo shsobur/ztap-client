@@ -1,17 +1,43 @@
 import "./Navbar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcMenu } from "react-icons/fc";
 import { RxCross1 } from "react-icons/rx";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { LuUserCircle } from "react-icons/lu";
 import { BsCartPlusFill } from "react-icons/bs";
+import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
+  };
+
+  // Sign Out__
+  const handleSignOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You went to sign out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#f70000",
+      cancelButtonColor: "#007c01",
+      confirmButtonText: "Yes, Sign out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOut().then(() => {
+          Swal.fire({
+            title: "Finished!",
+            text: "Sign out successfuly",
+            icon: "success",
+          });
+        });
+      }
+    });
   };
 
   return (
@@ -57,10 +83,13 @@ const Navbar = () => {
               <h3>
                 <LuUserCircle />
               </h3>
+
               <p>
-                <Link to="/signIn">
-                  SIGN IN
-                </Link>
+                {user ? (
+                  <button onClick={handleSignOut}>SIGN OUT</button>
+                ) : (
+                  <Link to="/signIn">SIGN IN</Link>
+                )}
               </p>
             </div>
 

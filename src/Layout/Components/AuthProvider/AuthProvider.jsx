@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/firebase.config";
 import {
-  createUserWithEmailAndPassword,
+  signOut,
   onAuthStateChanged,
   signInWithEmailAndPassword,
-  signOut,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 import PropTypes from "prop-types";
 
@@ -26,6 +26,7 @@ const AuthProvider = ({ children }) => {
       return result;
     } catch (error) {
       console.log("Error signing up:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }) => {
       return result;
     } catch (error) {
       console.log("Error signing up:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
