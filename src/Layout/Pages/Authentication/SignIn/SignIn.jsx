@@ -65,13 +65,6 @@ const SignIn = () => {
                   Dive in and explore our latest collection to find your perfect
                   pair of shoes!
                 </p>
-                <span className="pl-5 text-gray-800 font-normal">
-                  Dont have an account{" "}
-                  <Link to="/signUp" className="text-blue-700 font-medium">
-                    Register
-                  </Link>{" "}
-                  now!
-                </span>
               </div>
 
               <div className="right_signIn_main_container">
@@ -132,7 +125,7 @@ const SignIn = () => {
                     </label>
                   </div>
 
-                  <div className="w-full pt-10 flex items-center justify-end">
+                  <div className="w-full pt-10 pb-5 flex items-center justify-end">
                     {loading ? (
                       <button
                         type="submit"
@@ -150,6 +143,13 @@ const SignIn = () => {
                       </button>
                     )}
                   </div>
+                  <span className="text-gray-800 font-normal">
+                    Dont have an account{" "}
+                    <Link to="/signUp" className="text-blue-700 font-medium">
+                      Register
+                    </Link>{" "}
+                    now!
+                  </span>
                 </div>
               </div>
             </div>

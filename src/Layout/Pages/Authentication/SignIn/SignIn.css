@@ -10,7 +10,6 @@
   width: 100%;
   max-width: 1536px;
   margin: auto;
-  /* border: 2px solid rgb(28, 159, 182); */
 }
 
 .main_signIn_inner_container {
@@ -30,15 +29,12 @@
   width: 40%;
   height: auto;
   padding: 0 20px 0px 0px;
-  /* border: 2px solid tomato; */
 }
 
 .right_signIn_main_container {
   height: 100%;
   width: 60%;
-  /* margin-top: 100px; */
   padding-left: 20px;
-  /* border: 2px solid aqua; */
 }
 
 /* Left side container styleing__ */
@@ -59,4 +55,103 @@
   padding-top: 10px;
   font-weight: 300;
   font-family: "Roboto", serif;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .main_signIn_inner_container {
+    gap: 0;
+    width: 65%;
+    padding: 20px;
+  }
+
+  .left_signIn_main_container {
+    padding: 0;
+  }
+
+  .left_signIn_main_container h2 {
+    font-size: 1.6rem;
+    padding-left: 12px;
+  }
+
+  .left_signIn_main_container p {
+    padding-left: 12px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main_signIn_inner_container {
+    width: 75%;
+  }
+
+  .left_signIn_main_container h2 {
+    font-size: 1.4rem;
+  }
+
+  .left_signIn_main_container p {
+    padding-left: 12px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_signIn_inner_container {
+    flex-direction: column;
+  }
+
+  .left_signIn_main_container {
+    width: 100%;
+  }
+
+  .right_signIn_main_container {
+    width: 100%;
+  }
+
+  .signIn_image_container img {
+    width: 40%;
+  }
+
+  .left_signIn_main_container h2 {
+    font-size: 1.6rem;
+    padding-left: 15px;
+  }
+
+  .left_signIn_main_container p {
+    padding-left: 15px;
+    font-size: 16px;
+  }
+
+  .right_signIn_main_container {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .signIn_image_container img {
+    width: 45%;
+  }
+
+  .left_signIn_main_container p {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main_signIn_inner_container {
+    width: 80%;
+  }
+
+  .signIn_image_container img {
+    width: 50%;
+  }
+
+  .left_signIn_main_container h2 {
+    font-size: 1.4rem;
+    padding-left: 10px;
+  }
+
+  .left_signIn_main_container p {
+    padding-left: 10px;
+  }
 }
