@@ -65,7 +65,7 @@ const Navbar = () => {
                   <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <NavLink>Shop</NavLink>
+                  <NavLink to="/shop">Shop</NavLink>
                 </li>
                 <li>
                   <NavLink>Contact us</NavLink>
@@ -77,14 +77,13 @@ const Navbar = () => {
             </div>
 
             <div className="main_navbar_user_info_container">
-
               <div className="navbar_cart_info_container">
                 <h3>
                   <BsCartPlusFill />
                 </h3>
                 <span>99</span>
               </div>
-              
+
               <div title={userData.userEmail} className="cursor-pointer">
                 {user && (
                   <div>

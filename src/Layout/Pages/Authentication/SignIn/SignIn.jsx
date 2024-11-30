@@ -1,10 +1,10 @@
 import "./SignIn.css";
+import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import logo from "../../../../assets/logoFooter.png";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 
 const SignIn = () => {
   const { signInUser, loading } = useContext(AuthContext);

@@ -1,0 +1,172 @@
+.shop_main_container {
+  max-width: 1536px;
+  margin: auto;
+  margin-top: 72px;
+  /* border: 2px solid tomato; */
+}
+
+.shop_section_main_container {
+  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 10px 0;
+  /* border: 2px solid aqua; */
+}
+
+.shop_filter_section_container {
+  width: 25%;
+}
+
+.shop_item_section_container {
+  width: 75%;
+  border: 2px solid red;
+}
+
+/* Filter section style__ */
+
+.filter_memu_icon_container {
+  padding-left: 10px;
+  font-size: 2rem;
+}
+
+.shop_filter_inner_content_container {
+  height: calc(100vh - 84px);
+  width: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  border-radius: 8px;
+  background-color: #f4f6fa;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.filter_title_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-bottom: 20px;
+  font-family: "Montserrat", serif;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+/* Pirce section style__ */
+
+.price_filter_container {
+  margin-top: 20px;
+}
+
+.price_filter_container h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.price_filter_container select {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  outline: none;
+  font-weight: 600;
+  font-size: 18px;
+  border: 2px solid #151515;
+  background-color: white;
+}
+
+/* Categoty section style__ */
+
+.category_filter_container {
+  margin-top: 40px;
+}
+
+.category_filter_container h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.filter_categotu_content_container {
+  display: grid;
+  gap: 20px;
+  padding-top: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.filter_categotu_content_container h3 {
+  color: #ffffff;
+  padding: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 16px;
+  text-align: center;
+  background-color: #151515;
+}
+
+/* Status section style__ */
+
+.status_filter_container {
+  margin-top: 40px;
+}
+
+.status_filter_container h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding-bottom: 10px;
+}
+
+.status_filter_container select {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 8px;
+  outline: none;
+  font-weight: 600;
+  font-size: 18px;
+  border: 2px solid #151515;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+  .shop_main_container {
+    margin-top: 62px;
+  }
+}
