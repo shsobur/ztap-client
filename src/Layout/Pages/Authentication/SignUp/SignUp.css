@@ -10,7 +10,6 @@
   width: 100%;
   max-width: 1536px;
   margin: auto;
-  /* border: 2px solid rgb(28, 159, 182); */
 }
 
 .main_signUp_inner_container {
@@ -29,14 +28,12 @@
 
 .left_signUp_main_container {
   width: 40%;
-  padding: 0 20px 0px 0px;
-  /* border: 2px solid tomato; */
+  padding-right: 20px;
 }
 
 .right_signUp_main_container {
   height: auto;
   width: 60%;
-  /* border: 2px solid aqua; */
 }
 
 /* Left side container styleing__ */
@@ -57,4 +54,100 @@
   padding-top: 30px;
   font-weight: 300;
   font-family: "Roboto", serif;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .left_signUp_main_container h2 {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .signUp_image_container img {
+    width: 50%;
+  }
+
+  .main_signUp_inner_container {
+    width: 90%;
+    gap: 0px;
+  }
+
+  .left_signUp_main_container h2 {
+    font-size: 1.8rem;
+    padding-left: 10px;
+  }
+
+  .left_signUp_main_container p {
+    font-size: 14px;
+    padding-left: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main_signUp_container {
+    margin-top: 60px;
+  }
+
+  .main_signUp_outer_container {
+    height: auto;
+    padding-top: 80px;
+  }
+
+  .main_signUp_inner_container {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .left_signUp_main_container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .right_signUp_main_container {
+    width: 100%;
+  }
+
+  .left_signUp_main_container h2 {
+    padding-left: 25px;
+  }
+  .left_signUp_main_container p {
+    padding-left: 25px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main_signUp_inner_container {
+    padding: 20px;
+  }
+
+  .signUp_image_container img {
+    width: 45%;
+  }
+
+  .left_signUp_main_container h2 {
+    padding-left: 20px;
+  }
+  .left_signUp_main_container p {
+    padding-left: 20px;
+    padding-top: 10px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .signUp_image_container img {
+    width: 50%;
+  }
+
+  .left_signUp_main_container h2 {
+    font-size: 1.6rem;
+    padding-left: 15px;
+  }
+  .left_signUp_main_container p {
+    padding-left: 15px;
+    padding-top: 5px;
+  }
 }
