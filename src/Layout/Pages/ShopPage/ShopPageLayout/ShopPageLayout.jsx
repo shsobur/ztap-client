@@ -4,10 +4,15 @@ import { LuFilter } from "react-icons/lu";
 import { GoSearch } from "react-icons/go";
 import { IoIosMenu } from "react-icons/io";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
+import ShopingProductCart from "../../../Components/ShopingProductCart/ShopingProductCart";
+import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
 
 const ShopPageLayout = () => {
   const axiosPublic = UseAxiosPublic();
+  const [sizeNames, setSizeNames] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
 
   // Filter value_
   const [size, setSize] = useState("");
@@ -43,6 +48,30 @@ const ShopPageLayout = () => {
       setCategoryNames(res.data);
     });
   }, [axiosPublic]);
+
+  // Get only size__
+  useEffect(() => {
+    axiosPublic.get("/sizes").then((res) => {
+      setSizeNames(res.data);
+    });
+  }, [axiosPublic]);
+
+  // Get data by filter__
+  useEffect(() => {
+    setLoading(true);
+    const fatchData = async () => {
+      await axiosPublic
+        .get(
+          `/allProducts?name=${search}&category=${category}&status=${status}&size=${size}&sort=${sort}`
+        )
+        .then((res) => {
+          setProducts(res.data);
+          setLoading(false);
+        });
+    };
+
+    fatchData();
+  }, [axiosPublic, search, category, status, size, sort]);
 
   return (
     <>
@@ -98,18 +127,15 @@ const ShopPageLayout = () => {
               <div className="size_filter_container">
                 <h2>Size_</h2>
                 <div className="size_categotu_content_container">
-                  <h3 value="small" onClick={handleSize}>
-                    Small
-                  </h3>
-                  <h3 value="medium" onClick={handleSize}>
-                    Medium
-                  </h3>
-                  <h3 value="xl" onClick={handleSize}>
-                    xl
-                  </h3>
-                  <h3 value="2xl" onClick={handleSize}>
-                    2xl
-                  </h3>
+                  {sizeNames.map((sizeName) => (
+                    <h3
+                      key={sizeName.sizes}
+                      value={sizeName.sizes}
+                      onClick={handleSize}
+                    >
+                      {sizeName.sizes}
+                    </h3>
+                  ))}
                 </div>
               </div>
 
@@ -144,7 +170,22 @@ const ShopPageLayout = () => {
               </div>
             </form>
 
-            <div className="main_product_card_container"></div>
+            <div className="main_product_card_container">
+              {loading ? (
+                <div className="mt-40">
+                  <LoadingSpinner></LoadingSpinner>
+                </div>
+              ) : (
+                <div className="main_product_card_inner_container">
+                  {products.map((product) => (
+                    <ShopingProductCart
+                      key={product._id}
+                      cardItem={product}
+                    ></ShopingProductCart>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
