@@ -1,12 +1,13 @@
 import "./ShopPageLayout.css";
+import { useEffect, useState } from "react";
 import { LuFilter } from "react-icons/lu";
-import { IoIosMenu } from "react-icons/io";
 import { GoSearch } from "react-icons/go";
+import { IoIosMenu } from "react-icons/io";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
-import { useState } from "react";
 
 const ShopPageLayout = () => {
   const axiosPublic = UseAxiosPublic();
+  const [categoryNames, setCategoryNames] = useState([]);
 
   // Filter value_
   const [size, setSize] = useState("");
@@ -15,9 +16,7 @@ const ShopPageLayout = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
 
-  console.log(search);
-
-  // Search value__
+  // Search filter value__
   const handleSearch = (e) => {
     e.preventDefault();
 
@@ -25,6 +24,25 @@ const ShopPageLayout = () => {
     setSearch(searchValue);
     e.target.search.value = "";
   };
+
+  // Category filter value__
+  const hndleCategory = (e) => {
+    const categotyValue = e.target.getAttribute("value");
+    setCategory(categotyValue);
+  };
+
+  // Size filter value__
+  const handleSize = (e) => {
+    const sizeValue = e.target.getAttribute("value");
+    setSize(sizeValue);
+  };
+
+  // Get only categorys__
+  useEffect(() => {
+    axiosPublic.get("/categorys").then((res) => {
+      setCategoryNames(res.data);
+    });
+  }, [axiosPublic]);
 
   return (
     <>
@@ -45,7 +63,7 @@ const ShopPageLayout = () => {
 
               <div className="price_filter_container">
                 <h2>Price_</h2>
-                <select>
+                <select onChange={(e) => setSort(e.target.value)}>
                   <option value="asc">Low to High</option>
                   <option value="desc">Hign to low</option>
                 </select>
@@ -54,16 +72,21 @@ const ShopPageLayout = () => {
               <div className="category_filter_container">
                 <h2>Category_</h2>
                 <div className="filter_categotu_content_container">
-                  <h3 value="Athletic">Athletic</h3>
-                  <h3 value="Hiking">Hiking</h3>
-                  <h3 value="Sneakers">Sneakers</h3>
-                  <h3 value="Formal">Formal</h3>
+                  {categoryNames.map((categoryName) => (
+                    <h3
+                      key={categoryName.category}
+                      value={categoryName.category}
+                      onClick={hndleCategory}
+                    >
+                      {categoryName.category}
+                    </h3>
+                  ))}
                 </div>
               </div>
 
               <div className="status_filter_container">
                 <h2>Status_</h2>
-                <select>
+                <select onChange={(e) => setStatus(e.target.value)}>
                   <option value="none" disabled selected>
                     Choose
                   </option>
@@ -75,10 +98,18 @@ const ShopPageLayout = () => {
               <div className="size_filter_container">
                 <h2>Size_</h2>
                 <div className="size_categotu_content_container">
-                  <h3 value="small">Small</h3>
-                  <h3 value="medium">Medium</h3>
-                  <h3 value="xl">xl</h3>
-                  <h3 value="2xl">2xl</h3>
+                  <h3 value="small" onClick={handleSize}>
+                    Small
+                  </h3>
+                  <h3 value="medium" onClick={handleSize}>
+                    Medium
+                  </h3>
+                  <h3 value="xl" onClick={handleSize}>
+                    xl
+                  </h3>
+                  <h3 value="2xl" onClick={handleSize}>
+                    2xl
+                  </h3>
                 </div>
               </div>
 
