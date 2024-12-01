@@ -1,24 +1,46 @@
 import "./ShopPageLayout.css";
 import { LuFilter } from "react-icons/lu";
 import { IoIosMenu } from "react-icons/io";
+import { GoSearch } from "react-icons/go";
+import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
+import { useState } from "react";
 
 const ShopPageLayout = () => {
+  const axiosPublic = UseAxiosPublic();
+
+  // Filter value_
+  const [size, setSize] = useState("");
+  const [sort, setSort] = useState("asc");
+  const [status, setStatus] = useState("");
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+
+  console.log(search);
+
+  // Search value__
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const searchValue = e.target.search.value;
+    setSearch(searchValue);
+    e.target.search.value = "";
+  };
+
   return (
     <>
       <div className="shop_main_container">
         <div className="shop_section_main_container">
-
           <div className="shop_filter_section_container">
-
             <div className="filter_memu_icon_container">
               <IoIosMenu />
             </div>
 
             <div className="shop_filter_inner_content_container">
-              
               <div className="filter_title_container">
                 <h2>Filters</h2>
-                <h3><LuFilter /></h3>
+                <h3>
+                  <LuFilter />
+                </h3>
               </div>
 
               <div className="price_filter_container">
@@ -42,7 +64,9 @@ const ShopPageLayout = () => {
               <div className="status_filter_container">
                 <h2>Status_</h2>
                 <select>
-                  <option value="none" disabled selected>Choose</option>
+                  <option value="none" disabled selected>
+                    Choose
+                  </option>
                   <option value="new">New arrivals</option>
                   <option value="topSell">Top sell product</option>
                 </select>
@@ -72,16 +96,25 @@ const ShopPageLayout = () => {
                   <div id="color_9"></div>
                 </div>
               </div>
-
             </div>
           </div>
 
           <div className="shop_item_section_container">
-            <div className="search_bar_container">
-              
-            </div>
-          </div>
+            <form onSubmit={handleSearch}>
+              <div className="search_bar_container">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search products"
+                />
+                <button type="submit">
+                  <GoSearch />
+                </button>
+              </div>
+            </form>
 
+            <div className="main_product_card_container"></div>
+          </div>
         </div>
       </div>
     </>
