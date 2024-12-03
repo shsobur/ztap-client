@@ -13,7 +13,11 @@ const ShopingProductCart = ({ cardItem }) => {
 
           <div className="shoping_item_info_container">
             <div className="shoping_cart_header_container">
-              <h2>{cardItem.name}</h2>
+              <h2>
+                {cardItem.name.length < 20
+                  ? `${cardItem.name}`
+                  : `${cardItem.name.slice(0, 20)}...`}
+              </h2>
               <h4>{cardItem.category}</h4>
             </div>
 

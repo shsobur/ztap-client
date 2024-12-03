@@ -268,6 +268,15 @@
   background-color: #a52a2a;
 }
 
+/* Search bar style__ */
+
+.shop_item_filter_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .search_bar_container {
   display: flex;
   align-items: center;
@@ -276,7 +285,7 @@
 }
 
 .search_bar_container input {
-  width: 45%;
+  width: 50%;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   outline: none;
@@ -295,6 +304,26 @@
 
 .search_bar_container button:hover {
   background-color: #333333;
+}
+
+.filter_reset_container {
+  color: #ffffff;
+  padding: 8px 30px;
+  cursor: pointer;
+  border-radius: 8px;
+  background-color: #151515;
+}
+
+.filter_reset_container:hover {
+  background-color: #333333;
+}
+
+.filter_reset_container button {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
 }
 
 /* Main product card style__ */

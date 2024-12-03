@@ -1,11 +1,12 @@
 import "./ShopPageLayout.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { LuFilter } from "react-icons/lu";
 import { GoSearch } from "react-icons/go";
 import { IoIosMenu } from "react-icons/io";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
 import ShopingProductCart from "../../../Components/ShopingProductCart/ShopingProductCart";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
+import { GrPowerReset } from "react-icons/gr";
 
 const ShopPageLayout = () => {
   const axiosPublic = UseAxiosPublic();
@@ -57,21 +58,33 @@ const ShopPageLayout = () => {
   }, [axiosPublic]);
 
   // Get data by filter__
-  useEffect(() => {
+  const fatchData = useCallback(async () => {
     setLoading(true);
-    const fatchData = async () => {
-      await axiosPublic
-        .get(
-          `/allProducts?name=${search}&category=${category}&status=${status}&size=${size}&sort=${sort}`
-        )
-        .then((res) => {
-          setProducts(res.data);
-          setLoading(false);
-        });
-    };
+    try {
+      const res = await axiosPublic.get(
+        `/allProducts?name=${search}&category=${category}&status=${status}&size=${size}&sort=${sort}`
+      );
+      setProducts(res.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, [axiosPublic, category, search, size, sort, status]);
+
+  useEffect(() => {
+    fatchData();
+  }, [fatchData]);
+
+  const handleReset = () => {
+    setSize("");
+    setSearch("");
+    setStatus("");
+    setSort("asc");
+    setCategory("");
 
     fatchData();
-  }, [axiosPublic, search, category, status, size, sort]);
+  };
 
   return (
     <>
@@ -92,7 +105,7 @@ const ShopPageLayout = () => {
 
               <div className="price_filter_container">
                 <h2>Price_</h2>
-                <select onChange={(e) => setSort(e.target.value)}>
+                <select value={sort} onChange={(e) => setSort(e.target.value)}>
                   <option value="asc">Low to High</option>
                   <option value="desc">Hign to low</option>
                 </select>
@@ -115,8 +128,8 @@ const ShopPageLayout = () => {
 
               <div className="status_filter_container">
                 <h2>Status_</h2>
-                <select onChange={(e) => setStatus(e.target.value)}>
-                  <option value="none" disabled selected>
+                <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                  <option value="" disabled selected>
                     Choose
                   </option>
                   <option value="new">New arrivals</option>
@@ -158,15 +171,23 @@ const ShopPageLayout = () => {
 
           <div className="shop_item_section_container">
             <form onSubmit={handleSearch}>
-              <div className="search_bar_container">
-                <input
-                  type="text"
-                  name="search"
-                  placeholder="Search products"
-                />
-                <button type="submit">
-                  <GoSearch />
-                </button>
+              <div className="shop_item_filter_container">
+                <div className="search_bar_container">
+                  <input
+                    type="text"
+                    name="search"
+                    placeholder="Search products"
+                  />
+                  <button type="submit">
+                    <GoSearch />
+                  </button>
+                </div>
+
+                <div onClick={handleReset} className="filter_reset_container">
+                  <button>
+                    <GrPowerReset /> Reset
+                  </button>
+                </div>
               </div>
             </form>
 
