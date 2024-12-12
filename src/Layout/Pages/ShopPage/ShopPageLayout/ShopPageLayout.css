@@ -340,6 +340,28 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* pagination style__ */
+
+.pagination_container {
+  gap: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.pagination_container h3 {
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.pagination_container p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 @media screen and (max-width: 1024px) {
   .shop_main_container {
     margin-top: 62px;

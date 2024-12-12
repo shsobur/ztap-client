@@ -8,7 +8,7 @@ const ShopingProductCart = ({ cardItem }) => {
       <div className="shoping_cart_section_outer_container">
         <div className="main_shoping_cart_section_container">
           <div className="shoping_cart_image_container">
-            <img src={cardItem.images[0]} alt="Prodict image" />
+            <img src={cardItem.images[0]} alt="Product image" />
           </div>
 
           <div className="shoping_item_info_container">

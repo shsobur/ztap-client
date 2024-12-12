@@ -1,19 +1,25 @@
 import "./ShopPageLayout.css";
-import { useCallback, useEffect, useState } from "react";
+// React icons__
 import { LuFilter } from "react-icons/lu";
 import { GoSearch } from "react-icons/go";
 import { IoIosMenu } from "react-icons/io";
-import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
-import ShopingProductCart from "../../../Components/ShopingProductCart/ShopingProductCart";
-import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
 import { GrPowerReset } from "react-icons/gr";
+
+import { useCallback, useEffect, useState } from "react";
+import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
+import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
+import ShopingProductCart from "../../../Components/ShopingProductCart/ShopingProductCart";
+import { CiSquareChevLeft, CiSquareChevRight } from "react-icons/ci";
 
 const ShopPageLayout = () => {
   const axiosPublic = UseAxiosPublic();
+
   const [sizeNames, setSizeNames] = useState([]);
   const [categoryNames, setCategoryNames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
 
   // Filter value_
   const [size, setSize] = useState("");
@@ -50,7 +56,7 @@ const ShopPageLayout = () => {
     });
   }, [axiosPublic]);
 
-  // Get only size__
+  // Get only sizes__
   useEffect(() => {
     axiosPublic.get("/sizes").then((res) => {
       setSizeNames(res.data);
@@ -62,19 +68,28 @@ const ShopPageLayout = () => {
     setLoading(true);
     try {
       const res = await axiosPublic.get(
-        `/allProducts?name=${search}&category=${category}&status=${status}&size=${size}&sort=${sort}`
+        `/allProducts?name=${search}&page=${page}$limit=${9}&category=${category}&status=${status}&size=${size}&sort=${sort}`
       );
-      setProducts(res.data);
+      setProducts(res.data.result);
+      setTotalPage(Math.ceil(res.data.totalProduct / 9));
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       setLoading(false);
     }
-  }, [axiosPublic, category, search, size, sort, status]);
+  }, [axiosPublic, category, search, page, size, sort, status]);
 
   useEffect(() => {
     fatchData();
   }, [fatchData]);
+
+  // Page handler__
+  const handlePageChange = (newPage) => {
+    if(newPage > 0 && newPage <= totalPage) {
+      setPage(newPage);
+      window.scrollTo({top: 0, behavior: "smooth"});
+    }
+  }
 
   const handleReset = () => {
     setSize("");
@@ -206,6 +221,12 @@ const ShopPageLayout = () => {
                   ))}
                 </div>
               )}
+            </div>
+
+            <div className="pagination_container">
+              <h3 onClick={() => handlePageChange(page - 1)}><CiSquareChevLeft /></h3>
+              <p>Page {page} of {totalPage}</p>
+              <h3 onClick={() => handlePageChange(page + 1)}><CiSquareChevRight /></h3>
             </div>
           </div>
         </div>
