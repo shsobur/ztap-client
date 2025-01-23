@@ -1,0 +1,19 @@
+.product_details_main_top_container {
+  margin-top: 72px;
+  padding: 0 20px;
+}
+
+.product_details_main_inner_container {
+  max-width: 1920px;
+  margin: auto;
+  /* border: 2px solid red; */
+}
+
+/* Main all product section style__ ST */
+
+.product_info_main_top_container {
+  padding-top: 20px;
+  /* border: 2px solid skyblue; */
+}
+
+/* Main all product section style__ END */

@@ -39,7 +39,7 @@
   padding: 20px;
   overflow-y: auto;
   border-radius: 8px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: 2px solid #0000001a;
 }
 
 .filter_title_container {

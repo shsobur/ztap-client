@@ -5,6 +5,7 @@ import SignUp from "../Pages/Authentication/SignUp/SignUp";
 import SignIn from "../Pages/Authentication/SignIn/SignIn";
 import HomePageLayout from "../Pages/HomePage/HomePageLayout/HomePageLayout";
 import ShopPageLayout from "../Pages/ShopPage/ShopPageLayout/ShopPageLayout";
+import ProductDetails from "../Components/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <ShopPageLayout></ShopPageLayout>,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductDetails></ProductDetails>,
       },
       {
         path: "/signIn",

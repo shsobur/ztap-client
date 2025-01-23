@@ -1,0 +1,132 @@
+.product_info_inner_container {
+  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+/* Main product content sytle__ */
+
+.product_image_main_container {
+  width: 45%;
+  height: 100%;
+  cursor: not-allowed;
+  /* border: 2px solid #eba40b; */
+}
+
+.product_card_details_main_contaenr {
+  width: 55%;
+  height: 100%;
+  color: #151515;
+  /* border: 2px solid hotpink; */
+}
+
+/* left image container style__ */
+
+.product_image_main_container img {
+  border-radius: 8px;
+}
+
+/* Right image container style__ */
+
+.first_details_container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.first_details_container h3 {
+  font-size: 1.3rem;
+  padding: 10px 0 10px 0;
+}
+
+.product_price_section {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.product_price_section h2 {
+  font-size: 2rem;
+  font-weight: 700;
+
+}
+
+.product_price_section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0000004D;
+}
+
+.product_price_section h4 {
+  color: #FF3333;
+  padding: 2px 10px;
+  border-radius: 32px;
+  background-color: #FF33331A;
+}
+
+.first_details_container p {
+  font-size: 18px;
+  color: #00000099;
+  padding-bottom: 10px;
+}
+
+.product_color_section {
+  padding: 20px 0 20px 0;
+  border-top: 1px solid #0000001A;
+  border-bottom: 1px solid #0000001A;
+}
+
+.product_color_section h2 {
+  font-size: 18px;
+  color: #00000099;
+  font-weight: 500;
+}
+
+.product_color_section ul {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.product_color_section ul li {
+  color: #151515;
+  font-size: 20px;
+  color: #00000099;
+  padding: 5px 20px;
+  border-radius: 32px;
+  background-color: #F0F0F0;
+}
+
+.product_size_section {
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid #0000001A;
+}
+
+.product_size_section h2 {
+  font-size: 18px;
+  color: #00000099;
+  font-weight: 500;
+}
+
+.product_size_section ul {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.product_size_section ul li {
+  color: #151515;
+  font-size: 20px;
+  font-weight: 500;
+  color: #00000099;
+  padding: 5px 20px;
+  border-radius: 32px;
+  background-color: #F0F0F0;
+}
