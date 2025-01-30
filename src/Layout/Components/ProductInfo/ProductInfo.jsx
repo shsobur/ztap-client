@@ -1,8 +1,10 @@
 import "./ProductInfo.css";
+import PropTypes from 'prop-types';
+import { FiMinus, FiPlus } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const ProductInfo = () => {
+const ProductInfo = ({plus, minus, quantity}) => {
   return (
     <>
       <div className="product_info_inner_container">
@@ -62,8 +64,12 @@ const ProductInfo = () => {
             </div>
 
             <div className="product_buy_btn_container">
-              <div className="product_count_container">- 1 +</div>
-              <div className="product_add_cart_btn_container">Add to Cart</div>
+              <div className="product_count_container">
+                <button onClick={plus}><FiPlus /></button>
+                  <h3>{quantity}</h3>
+                <button onClick={minus}><FiMinus /></button>
+              </div>
+              <button className="product_add_cart_btn_container">Add to Cart</button>
             </div>
 
           </div>
@@ -73,5 +79,11 @@ const ProductInfo = () => {
     </>
   );
 };
+
+ProductInfo.propTypes = {
+  plus: PropTypes.func,
+  minus: PropTypes.func,
+  quantity: PropTypes.number
+}
 
 export default ProductInfo;
