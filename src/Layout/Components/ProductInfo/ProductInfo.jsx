@@ -4,7 +4,9 @@ import { FiMinus, FiPlus } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const ProductInfo = ({ plus, minus, quantity }) => {
+const ProductInfo = ({product, plus, minus, quantity }) => {
+  console.log(product.images);
+
   return (
     <>
       <div className="product_info_inner_container">
@@ -14,54 +16,42 @@ const ProductInfo = ({ plus, minus, quantity }) => {
             emulateTouch={false}
             useKeyboardArrows={true}
           >
-            <div>
-              <img src="https://i.postimg.cc/ncPJ8QG3/Athletic-Shoes-1-1.jpg" />
-            </div>
-
-            <div>
-              <img src="https://i.postimg.cc/3wg5Df5q/Athletic-Shoes-1-2.jpg" />
-            </div>
-
-            <div>
-              <img src="https://i.postimg.cc/fLKG83bj/Athletic-Shoes-1-3.jpg" />
-            </div>
+            {
+              product.images.map(image => <img key={image} src={image} alt="img" />)
+            }
           </Carousel>
         </div>
 
         <div className="product_card_details_main_contaenr">
           <div className="first_details_container">
-            <h2>One Life Graphic T-shirt</h2>
+            <h2>{product.name}</h2>
             <h3>⭐⭐⭐⭐ 4/5</h3>
 
             <div className="product_price_section">
-              <h2>$150</h2>
-              <h3>$170</h3>
-              <h4>-43%</h4>
+              <h2>${product.newPrice}</h2>
+              <h3>${product.oldPrice}</h3>
+              <h4>{product.savings}</h4>
             </div>
 
             <p>
-              This graphic t-shirt which is perfect for any occasion. Crafted
-              from a soft and breathable fabric, it offers superior comfort and
-              style.
+              {product.description}
             </p>
 
             <div className="product_color_section">
               <h2>Available Color_</h2>
               <ul>
-                <li>Black</li>
-                <li>Red</li>
-                <li>Purple</li>
-                <li>Brown</li>
+                {
+                  product.availableColors.map(color => <li key={color}>{color}</li>)
+                }
               </ul>
             </div>
 
             <div className="product_size_section">
               <h2>Available Size_</h2>
               <ul>
-                <li>Small</li>
-                <li>Medium</li>
-                <li>xl</li>
-                <li>2xl</li>
+                {
+                  product.sizes.map(size => <li key={size}>{size}</li>)
+                }
               </ul>
             </div>
 
@@ -87,6 +77,7 @@ const ProductInfo = ({ plus, minus, quantity }) => {
 };
 
 ProductInfo.propTypes = {
+  product: PropTypes.object,
   plus: PropTypes.func,
   minus: PropTypes.func,
   quantity: PropTypes.number,
