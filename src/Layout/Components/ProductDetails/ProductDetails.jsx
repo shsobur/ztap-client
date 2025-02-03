@@ -2,9 +2,14 @@ import "./ProductDetails.css";
 import { useState } from "react";
 import ProductInfo from "../ProductInfo/ProductInfo";
 import { useLoaderData } from "react-router-dom";
+import UseAxiosPublic from "../../Hooks/axiosPublic/axiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const ProductDetails = () => {
   const product = useLoaderData();
+  const axiosPublic = UseAxiosPublic();
+  // console.log(product.productCode)
+  const code = product.productCode;
 
   const [quantity, setQuantity] = useState(0);
 
@@ -20,6 +25,17 @@ const ProductDetails = () => {
     const minusValue = quantity - 1;
     setQuantity(minusValue);
   }
+
+  // Get reviews__
+  const {data: reviews = [],} = useQuery({
+    queryKey: ["reviews"],
+    queryFn: async () => {
+      const {data} = await axiosPublic.get(`/productReview/${code}`);
+      return data;
+    }
+  })
+
+  console.log(reviews);
 
   return (
     <>
