@@ -1,0 +1,89 @@
+.review_main_top_container {
+  max-width: 1536px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 0 10px;
+}
+
+/* Review top container style__ */
+
+.review_main_navigate_bar {
+  border: 2px solid green;
+}
+
+/* Review bottom container style__ */
+
+.review_main_content_container {
+  margin-top: 20px;
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+  /* border: 2px solid tomato; */
+}
+
+.review_main_card_container {
+  border-radius: 8px;
+  padding: 20px;
+  border: 2px solid #0000001a;
+}
+
+.review_rating_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review_rating_container h3 {
+  font-size: 1.2rem;
+  color: #00000066;
+}
+
+.review_text_content_container {
+  margin-top: 20px;
+}
+
+.review_text_content_container h2 {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #01ab31;
+}
+
+.review_text_content_container span {
+  color: #151515;
+  text-transform: uppercase;
+}
+
+.review_text_content_container p {
+  color: #00000099;
+  font-size: 18px;
+}
+
+.review_text_content_container h3 {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #00000099;
+}
+
+/* Review Load btn*/
+
+.review_load_btn {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.review_load_btn button {
+  border-radius: 64px;
+  padding: 10px 50px;
+  font-size: 18px;
+  font-weight: 500;
+  border: 2px solid #0000001a;
+}
+
+.review_load_btn button:hover {
+  background-color: #faf9f9;
+}

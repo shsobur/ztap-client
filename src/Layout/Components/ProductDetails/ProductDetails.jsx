@@ -1,15 +1,15 @@
 import "./ProductDetails.css";
 import { useState } from "react";
-import ProductInfo from "../ProductInfo/ProductInfo";
+import Reviews from "../Reviews/Reviews";
 import { useLoaderData } from "react-router-dom";
-import UseAxiosPublic from "../../Hooks/axiosPublic/axiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import ProductInfo from "../ProductInfo/ProductInfo";
+import UseAxiosPublic from "../../Hooks/axiosPublic/axiosPublic";
 
 const ProductDetails = () => {
   const product = useLoaderData();
   const axiosPublic = UseAxiosPublic();
   const code = product.productCode;
-
   const [quantity, setQuantity] = useState(0);
 
   const handleProductPlusCount = () => {
@@ -25,7 +25,7 @@ const ProductDetails = () => {
     setQuantity(minusValue);
   }
 
-  // Get reviews__
+  // Get product reviews__
   const {data: reviews = [],} = useQuery({
     queryKey: ["reviews"],
     queryFn: async () => {
@@ -44,7 +44,7 @@ const ProductDetails = () => {
           <div className="product_info_main_top_container">
             <ProductInfo product={product} reviews={reviews} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount}></ProductInfo>
           </div>
-          <div className="product_review_main_top_container">Reviews</div>
+          <div className="product_review_main_top_container"><Reviews reviews={reviews}></Reviews></div>
           <div className="same_product_card_main_top_container">Same card</div>
 
         </div>
