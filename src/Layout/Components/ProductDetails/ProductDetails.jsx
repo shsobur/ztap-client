@@ -8,7 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 const ProductDetails = () => {
   const product = useLoaderData();
   const axiosPublic = UseAxiosPublic();
-  // console.log(product.productCode)
   const code = product.productCode;
 
   const [quantity, setQuantity] = useState(0);
@@ -43,7 +42,7 @@ const ProductDetails = () => {
         <div className="product_details_main_inner_container">
 
           <div className="product_info_main_top_container">
-            <ProductInfo product={product} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount}></ProductInfo>
+            <ProductInfo product={product} reviews={reviews} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount}></ProductInfo>
           </div>
           <div className="product_review_main_top_container">Reviews</div>
           <div className="same_product_card_main_top_container">Same card</div>

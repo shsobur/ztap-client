@@ -34,7 +34,11 @@
 }
 
 .first_details_container h3 {
+  gap: 10px;
+  display: flex;
   font-size: 1.3rem;
+  font-weight: 500;
+  color: #0000004d;
   padding: 10px 0;
 }
 
