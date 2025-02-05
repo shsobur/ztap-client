@@ -12,6 +12,10 @@ const Style = () => {
           <div className="style_images" id="image_3"></div>
           <div className="style_images" id="image_4"></div>
         </div>
+
+        <div className="style_btn_container">
+          <button className="button-86" role="button">Shop Now!</button>
+        </div>
       </div>
     </>
   );
