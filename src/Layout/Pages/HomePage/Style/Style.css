@@ -37,28 +37,24 @@
 #image_1 {
   grid-column-start: 1;
   grid-column-end: 6;
-  background-position: 0 -80px;
   background-image: url("https://i.postimg.cc/zBBbv0f7/style-1.jpg");
 }
 
 #image_2 {
   grid-column-start: 6;
   grid-column-end: -1;
-  background-position: 0 -50px;
   background-image: url("https://i.postimg.cc/fLpch6vm/style-2.jpg");
 }
 
 #image_3 {
   grid-column-start: 1;
   grid-column-end: 8;
-  background-position: 0 -30px;
   background-image: url("https://i.postimg.cc/3NGgrnL6/style-3.jpg");
 }
 
 #image_4 {
   grid-column-start: 8;
   grid-column-end: -1;
-  background-position: 0 -50px;
   background-image: url("https://i.postimg.cc/8PhhqXff/style-4.jpg");
 }
 
@@ -95,12 +91,12 @@
 
 .button-86::after,
 .button-86::before {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: -99999;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
 .button-86::before {
@@ -139,3 +135,93 @@
   transform: translate(0, 5%);
 }
 /* Btn style__END */
+
+/* Responsive sayle__ */
+
+@media screen and (max-width: 1280px) {
+  .style_main_top_container h1 {
+    font-size: 2.8rem;
+  }
+
+  .style_image_main_container {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .style_main_top_container h1 {
+    font-size: 2.6rem;
+    margin-bottom: 80px;
+  }
+
+  .style_image_main_container {
+    gap: 20px;
+  }
+
+  .style_btn_container {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .style_main_top_container h1 {
+    font-size: 2.4rem;
+    margin-bottom: 60px;
+  }
+
+  .style_image_main_container {
+    gap: 30px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #image_1 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    background-position: 0 -30px;
+  }
+
+  #image_2 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  #image_3 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  #image_4 {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    background-position: 0 -40px;
+  }
+
+  .style_images:hover {
+    transform: none;
+  }
+
+  .style_btn_container {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .style_main_top_container h1 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+  }
+
+  #image_1 {
+    background-position: 0 0;
+  }
+  #image_4 {
+    background-position: 0 0;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .style_main_top_container h1 {
+    font-size: 1.7rem;
+    margin-bottom: 40px;
+  }
+}
