@@ -1,0 +1,63 @@
+.style_main_top_container {
+  max-width: 1536px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 0 10px;
+  border-radius: 16px;
+}
+
+.style_main_top_container h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.style_image_main_container {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.style_images {
+  height: 300px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: #32325d40 0px 50px 100px -20px, #0000004d 0px 30px 60px -30px,
+    #0a254059 0px -2px 6px 0px inset;
+}
+
+.style_images:hover {
+  transform: scale(1.06);
+}
+
+#image_1 {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  background-position: 0 -80px;
+  background-image: url("https://i.postimg.cc/zBBbv0f7/style-1.jpg");
+}
+
+#image_2 {
+  grid-column-start: 6;
+  grid-column-end: -1;
+  background-position: 0 -50px;
+  background-image: url("https://i.postimg.cc/fLpch6vm/style-2.jpg");
+}
+
+#image_3 {
+  grid-column-start: 1;
+  grid-column-end: 8;
+  background-position: 0 -30px;
+  background-image: url("https://i.postimg.cc/3NGgrnL6/style-3.jpg");
+}
+
+#image_4 {
+  grid-column-start: 8;
+  grid-column-end: -1;
+  background-position: 0 -50px;
+  background-image: url("https://i.postimg.cc/8PhhqXff/style-4.jpg");
+}
