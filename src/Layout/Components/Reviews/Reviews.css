@@ -2,13 +2,21 @@
   max-width: 1536px;
   margin: auto;
   margin-top: 50px;
-  padding: 0 10px;
+  padding: 20px 10px 0 10px;
+  border-top: 2px solid #0000001e;
 }
 
 /* Review top container style__ */
 
-.review_main_navigate_bar {
-  border: 2px solid green;
+.review_main_navigate_bar h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.review_main_navigate_bar span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #00000099;
 }
 
 /* Review bottom container style__ */
@@ -18,7 +26,6 @@
   display: grid;
   gap: 50px;
   grid-template-columns: repeat(2, 1fr);
-  /* border: 2px solid tomato; */
 }
 
 .review_main_card_container {
@@ -86,4 +93,83 @@
 
 .review_load_btn button:hover {
   background-color: #faf9f9;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .review_main_navigate_bar h2 {
+    font-size: 1.6rem;
+  }
+
+  .review_main_content_container {
+    gap: 30px;
+  }
+
+  .review_text_content_container {
+    margin-top: 15px;
+  }
+
+  .review_text_content_container p {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .review_main_navigate_bar h2 {
+    font-size: 1.4rem;
+  }
+
+  .review_main_navigate_bar span {
+    font-size: 1.1rem;
+  }
+
+  .review_main_content_container {
+    gap: 20px;
+  }
+
+  .review_main_card_container {
+    padding: 15px;
+  }
+
+  .review_text_content_container {
+    margin-top: 10px;
+  }
+
+  .review_text_content_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .review_text_content_container p {
+    padding-top: 10px;
+  }
+
+  .review_text_content_container h3 {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .review_main_content_container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .review_load_btn button {
+    padding: 8px 40px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .review_load_btn button {
+    padding: 6px 40px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .review_main_card_container {
+    padding: 10px;
+  }
 }

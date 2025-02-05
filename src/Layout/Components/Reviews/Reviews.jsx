@@ -9,7 +9,9 @@ const Reviews = ({ reviews }) => {
     <>
       <div className="review_main_top_container">
         <div className="review_main_navigate_bar">
-          Review ({reviews.length})
+          
+          <h2>All Reviews <span>({reviews.length})</span></h2>
+
         </div>
         <div className="review_main_content_container">
           {reviews.map((review) => (
