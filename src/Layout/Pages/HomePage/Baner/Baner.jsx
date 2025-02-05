@@ -55,7 +55,9 @@ const Baner = () => {
                   garments, designed to bring out your individuality and cater
                   to your sense of style.
                 </p>
-                <button>Shop Now</button>
+                <button className="button-85" role="button">
+                  Shop Now
+                </button>
               </div>
             )}
           </div>
