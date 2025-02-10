@@ -1,4 +1,5 @@
 import "./NewItem.css";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
@@ -6,7 +7,6 @@ import AllProductCards from "../../../Components/AllProductCards/AllProductCards
 // Swiper js__
 import "swiper/css";
 import "swiper/css/navigation";
-import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const NewItem = () => {

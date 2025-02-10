@@ -1,15 +1,11 @@
 import "./ProductInfo.css";
-import { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Rating } from "@smastrom/react-rating";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const ProductInfo = ({ product, reviews, plus, minus, quantity, handleProductData }) => {
-  const productCategory = product.category;
-  const productId = product._id;
-
+const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
   // Calculate average review__
   const calculateRating = (reviews) => {
     if (reviews.length === 0) {
@@ -21,17 +17,7 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity, handleProductDat
   };
 
   const averageReview = calculateRating(reviews);
-
-  // Send product data__
-  useEffect(() => {
-    if(productCategory && productId) {
-      handleProductData(productCategory, productId)
-    }
-    else{
-      console.log("data is undefind");
-    }
-  }, []);
-
+  
   return (
     <>
       <div className="product_info_inner_container">
@@ -104,11 +90,11 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity, handleProductDat
 
 ProductInfo.propTypes = {
   product: PropTypes.object,
-  reviews: PropTypes.object,
+  reviews: PropTypes.array,
   plus: PropTypes.func,
   minus: PropTypes.func,
   quantity: PropTypes.number,
-  handleProductData: PropTypes.func
+  handleSelectedProductData: PropTypes.func
 };
 
 export default ProductInfo;

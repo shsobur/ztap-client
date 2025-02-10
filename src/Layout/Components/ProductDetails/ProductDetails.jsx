@@ -11,16 +11,18 @@ const ProductDetails = () => {
   const product = useLoaderData();
   const axiosPublic = UseAxiosPublic();
   const code = product.productCode;
+  const productId = product._id;
+  const productCategory = product.category;
 
   const [quantity, setQuantity] = useState(0);
-  const [productId, setProductId] = useState("Sneakers");
-  const [productCategory, setProductCategory] = useState("");
 
+  // (+)__
   const handleProductPlusCount = () => {
     const plusValue = quantity + 1;
     setQuantity(plusValue);
   }
 
+  // (-)__
   const handleProductMinusCount = () => {
     if(quantity === 0) {
       return;
@@ -38,21 +40,14 @@ const ProductDetails = () => {
     }
   })
 
-  // Get the product value that clicked__
-  const handleProductData = (category, id) => {
-    setProductId(id);
-    setProductCategory(category);
-  }
-
-  const {data: sameCards = []} = useQuery({
-    queryKey: ["sameCards"],
+  // Get same products data__
+  const {data: sameProducts = [], isLoading} = useQuery({
+    queryKey: ["sameProducts"],
     queryFn: async () => {
-      const {data} = await axiosPublic.get(`/sameCards/${productId}?category=${productCategory}`);
+      const {data} = await axiosPublic.get(`/sameProducts?category=${productCategory}&id=${productId}`)
       return data;
     }
   })
-
-  console.log(sameCards);
 
   return (
     <>
@@ -60,10 +55,10 @@ const ProductDetails = () => {
         <div className="product_details_main_inner_container">
 
           <div className="product_info_main_top_container">
-            <ProductInfo product={product} reviews={reviews} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount} handleProductData={handleProductData}></ProductInfo>
+            <ProductInfo product={product} reviews={reviews} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount} ></ProductInfo>
           </div>
           <div className="product_review_main_top_container"><Reviews reviews={reviews}></Reviews></div>
-          <div className="same_product_card_main_top_container"><SameCard></SameCard></div>
+          <div className="same_product_card_main_top_container"><SameCard sameProducts={sameProducts} isLoading={isLoading}></SameCard></div>
 
         </div>
       </div>
