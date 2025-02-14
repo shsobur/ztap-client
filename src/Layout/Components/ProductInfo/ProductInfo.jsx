@@ -9,8 +9,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
   const [productColor, setProductColor] = useState("");
   const [productSize, setproductSize] = useState("");
-  console.log(productColor);
-  console.log(productSize);
 
   // Calculate average review__
   const calculateRating = (reviews) => {
@@ -23,6 +21,26 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
   };
 
   const averageReview = calculateRating(reviews);
+
+  // Cart product data__
+  const cartData = {
+    quantity,
+    name: product.name,
+    color: productColor,
+    size: productSize,
+    price: product.newPrice,
+    image: product.images[0],
+    productCode: product.productCode
+  }
+
+  function forNow () {
+    if(quantity > 0 && productColor && productSize) {
+      console.log(cartData);
+      return;
+    }
+
+    console.log("Choce color, quantity and size ");
+  }
 
   return (
     <>
@@ -109,7 +127,7 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
                   <FiMinus />
                 </button>
               </div>
-              <button className="product_add_cart_btn_container">
+              <button onClick={forNow} className="product_add_cart_btn_container">
                 Add to Cart
               </button>
             </div>
