@@ -94,18 +94,26 @@
 }
 
 .product_color_section ul li {
-  color: #151515;
   font-size: 20px;
-  color: #00000099;
-  padding: 5px 20px;
   font-weight: 500;
-  border-radius: 32px;
-  background-color: #f0f0f0;
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 28px;
+}
+
+.not_selected:hover {
+  transition: 0.2s ease-in-out;
+  border-bottom: 2px solid #151515;
+}
+
+.seclected_color {
+  color: #fafafa;
+  background-color: #151515;
 }
 
 .product_size_section {
   padding: 20px 0;
-  border-bottom: 1px solid #0000001a;
+  border-bottom: 1px solid #1312121a;
 }
 
 .product_size_section h2 {
@@ -123,14 +131,32 @@
 }
 
 .product_size_section ul li {
-  color: #151515;
   font-size: 20px;
   font-weight: 500;
-  color: #00000099;
+  cursor: pointer;
   padding: 5px 20px;
-  border-radius: 32px;
-  background-color: #f0f0f0;
+  border-radius: 28px;
 }
+
+.not_selected:hover {
+  transition: 0.2s ease-in-out;
+  border-bottom: 2px solid #151515;
+}
+
+/* Selected Size and color style__ST */
+
+.not_selected {
+  color: #00000099;
+  background-color: #f0f0f0;
+  border-bottom: 2px solid transparent;
+}
+
+.selected {
+  color: #f7f7f7;
+  background-color: #151515;
+}
+
+/* Selected Size and color style__End */
 
 /* Buy btn container style__ */
 

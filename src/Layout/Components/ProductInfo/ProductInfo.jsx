@@ -1,4 +1,5 @@
 import "./ProductInfo.css";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { Rating } from "@smastrom/react-rating";
 import { FiMinus, FiPlus } from "react-icons/fi";
@@ -6,6 +7,11 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
+  const [productColor, setProductColor] = useState("");
+  const [productSize, setproductSize] = useState("");
+  console.log(productColor);
+  console.log(productSize);
+
   // Calculate average review__
   const calculateRating = (reviews) => {
     if (reviews.length === 0) {
@@ -17,7 +23,7 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
   };
 
   const averageReview = calculateRating(reviews);
-  
+
   return (
     <>
       <div className="product_info_inner_container">
@@ -37,7 +43,11 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
           <div className="first_details_container">
             <h2>{product.name}</h2>
             <h3>
-              <Rating style={{ maxWidth: 110 }} value={averageReview} readOnly />
+              <Rating
+                style={{ maxWidth: 110 }}
+                value={averageReview}
+                readOnly
+              />
               {averageReview}
             </h3>
 
@@ -53,7 +63,18 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
               <h2>Available Color_</h2>
               <ul>
                 {product.availableColors.map((color) => (
-                  <li key={color}>{color}</li>
+                  <li
+                    value={color}
+                    onClick={(e) =>
+                      setProductColor(e.target.getAttribute("value"))
+                    }
+                    key={color}
+                    className={
+                      productColor === color ? "selected" : "not_selected"
+                    }
+                  >
+                    {color}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -62,7 +83,18 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
               <h2>Available Size_</h2>
               <ul>
                 {product.sizes.map((size) => (
-                  <li key={size}>{size}</li>
+                  <li
+                    value={size}
+                    onClick={(e) =>
+                      setproductSize(e.target.getAttribute("value"))
+                    }
+                    key={size}
+                    className={
+                      productSize === size ? "selected" : "not_selected"
+                    }
+                  >
+                    {size}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -94,7 +126,7 @@ ProductInfo.propTypes = {
   plus: PropTypes.func,
   minus: PropTypes.func,
   quantity: PropTypes.number,
-  handleSelectedProductData: PropTypes.func
+  handleSelectedProductData: PropTypes.func,
 };
 
 export default ProductInfo;
