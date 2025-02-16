@@ -80,12 +80,14 @@ const Navbar = () => {
             </div>
 
             <div className="main_navbar_user_info_container">
-              <div className="navbar_cart_info_container">
-                <h3>
-                  <BsCartPlusFill />
-                </h3>
-                <span>{cart.length}</span>
-              </div>
+              <Link to="/carts">
+                <div className="navbar_cart_info_container">
+                  <h3>
+                    <BsCartPlusFill />
+                  </h3>
+                  <span>{cart.length}</span>
+                </div>
+              </Link>
 
               <div title={userData.userEmail} className="cursor-pointer">
                 {user && (
