@@ -55,7 +55,7 @@ const ProductDetails = () => {
         <div className="product_details_main_inner_container">
 
           <div className="product_info_main_top_container">
-            <ProductInfo product={product} reviews={reviews} quantity={quantity} plus={handleProductPlusCount} minus={handleProductMinusCount} ></ProductInfo>
+            <ProductInfo product={product} reviews={reviews} quantity={quantity} setQuantity={setQuantity} plus={handleProductPlusCount} minus={handleProductMinusCount} ></ProductInfo>
           </div>
           <div className="product_review_main_top_container"><Reviews reviews={reviews}></Reviews></div>
           <div className="same_product_card_main_top_container"><SameCard sameProducts={sameProducts} isLoading={isLoading}></SameCard></div>

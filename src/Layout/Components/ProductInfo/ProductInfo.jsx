@@ -1,19 +1,28 @@
 import "./ProductInfo.css";
+import Swal from "sweetalert2";
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 import { Rating } from "@smastrom/react-rating";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
+import useUserData from "../../Hooks/userData/useUserData";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import useAxiosSecure from "../../Hooks/axiosSecure/axiosSecure";
-import useUserData from "../../Hooks/userData/useUserData";
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import useCart from "../../Hooks/useCart/useCart";
 
-const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
+const ProductInfo = ({
+  product,
+  reviews,
+  plus,
+  minus,
+  quantity,
+  setQuantity,
+}) => {
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { userRole, userNumber, userEmail } = useUserData();
+  const [, refetch] = useCart();
   const [productColor, setProductColor] = useState("");
   const [productSize, setproductSize] = useState("");
 
@@ -47,12 +56,12 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
     if (userRole === "buyer") {
       if (quantity > 0 && productColor && productSize) {
         axiosSecure
-          .post("/carts", cartData)
+          .post("/cart", cartData)
           .then((res) => {
             if (res.data.acknowledged) {
               const Toast = Swal.mixin({
                 toast: true,
-                position: "bottom-end",
+                position: "bottom",
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
@@ -65,8 +74,15 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
                 icon: "success",
                 title: "Cart added successfully",
               });
+
+              setProductColor("");
+              setproductSize("");
+              setQuantity(0);
+
+              refetch();
             }
           })
+
           .catch((error) => {
             console.log("Added to card failed", error);
           });
@@ -197,6 +213,7 @@ ProductInfo.propTypes = {
   plus: PropTypes.func,
   minus: PropTypes.func,
   quantity: PropTypes.number,
+  setQuantity: PropTypes.number,
   handleSelectedProductData: PropTypes.func,
 };
 

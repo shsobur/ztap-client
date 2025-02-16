@@ -9,13 +9,16 @@ import { BsCartPlusFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Components/AuthProvider/AuthProvider";
 import useUserData from "../../Hooks/userData/useUserData";
+import useCart from "../../Hooks/useCart/useCart";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const userData = useUserData();
+  const [cart] = useCart();
   const userImage = userData.image;
 
+  // Handle menu bar__
   const handleIsOpen = () => {
     setIsOpen(!isOpen);
   };
@@ -81,7 +84,7 @@ const Navbar = () => {
                 <h3>
                   <BsCartPlusFill />
                 </h3>
-                <span>99</span>
+                <span>{cart.length}</span>
               </div>
 
               <div title={userData.userEmail} className="cursor-pointer">
