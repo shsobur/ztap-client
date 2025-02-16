@@ -5,8 +5,15 @@ import { Rating } from "@smastrom/react-rating";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import useAxiosSecure from "../../Hooks/axiosSecure/axiosSecure";
+import useUserData from "../../Hooks/userData/useUserData";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
+  const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
+  const { userRole, userNumber, userEmail } = useUserData();
   const [productColor, setProductColor] = useState("");
   const [productSize, setproductSize] = useState("");
 
@@ -30,17 +37,60 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
     size: productSize,
     price: product.newPrice,
     image: product.images[0],
-    productCode: product.productCode
-  }
+    productCode: product.productCode,
+    userEmail,
+    userNumber,
+  };
 
-  function forNow () {
-    if(quantity > 0 && productColor && productSize) {
-      console.log(cartData);
-      return;
+  // Handle cart data__
+  const handleAddToCart = () => {
+    if (userRole === "buyer") {
+      if (quantity > 0 && productColor && productSize) {
+        axiosSecure
+          .post("/carts", cartData)
+          .then((res) => {
+            if (res.data.acknowledged) {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-end",
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                },
+              });
+              Toast.fire({
+                icon: "success",
+                title: "Cart added successfully",
+              });
+            }
+          })
+          .catch((error) => {
+            console.log("Added to card failed", error);
+          });
+      } else {
+        Swal.fire("Wait! seclect product color, size and quantity you need!");
+      }
+    } else if (userRole === "admin") {
+      Swal.fire("Sorry admin can't add product to cart");
+    } else {
+      Swal.fire({
+        title: "Login first!",
+        text: "Without login you can't add this to cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#008001",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/signUp");
+        }
+      });
     }
-
-    console.log("Choce color, quantity and size ");
-  }
+  };
 
   return (
     <>
@@ -127,7 +177,10 @@ const ProductInfo = ({ product, reviews, plus, minus, quantity }) => {
                   <FiMinus />
                 </button>
               </div>
-              <button onClick={forNow} className="product_add_cart_btn_container">
+              <button
+                onClick={handleAddToCart}
+                className="product_add_cart_btn_container"
+              >
                 Add to Cart
               </button>
             </div>
