@@ -1,0 +1,75 @@
+.main_carts_card_container {
+  margin-top: 20px;
+  gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e4e3e3;
+}
+
+/* Right side style__ */
+
+.carts_card_image_container {
+  width: 40%;
+}
+
+.carts_card_image_container img {
+  border-radius: 8px;
+}
+
+/* Right side style__ */
+
+.carts_card_info_container {
+  width: 100%;
+}
+
+.title_and_delete_container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title_and_delete_container h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.title_and_delete_container button {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: red;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.title_and_delete_container button:active {
+  background-color: #ececec;
+}
+
+.carts_card_info_container ul {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.carts_card_info_container h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.product_price_and_quantity_container {
+  display: flex;
+  align-content: end;
+  justify-content: space-between;
+}
+
+.product_price_and_quantity_container li:nth-child(1) {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.product_price_and_quantity_container li:nth-child(2) {
+  font-size: 1.3rem;
+  font-weight: 500;
+}

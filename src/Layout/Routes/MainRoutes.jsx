@@ -6,7 +6,7 @@ import SignIn from "../Pages/Authentication/SignIn/SignIn";
 import HomePageLayout from "../Pages/HomePage/HomePageLayout/HomePageLayout";
 import ShopPageLayout from "../Pages/ShopPage/ShopPageLayout/ShopPageLayout";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
-import Carts from "../Components/Carts/Carts";
+import Carts from "../Pages/Carts/Carts";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/carts",
-        element: <Carts></Carts>,
+        element: <Carts></Carts>
       },
       {
         path: "/signIn",
