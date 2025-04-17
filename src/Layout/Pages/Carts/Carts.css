@@ -38,3 +38,76 @@
   border-radius: 8px;
   border: 1px solid #0000001a;
 }
+
+/* Order info style__ */
+
+.price_container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+#order_amount {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#order_amount li:nth-child(1) {
+  color: #00000099;
+}
+
+#order_amount li:nth-child(2) {
+  color: #151515;
+  font-weight: 700;
+}
+
+#order_discount {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#order_discount li:nth-child(1) {
+  color: #00000099;
+}
+
+#order_discount li:nth-child(2) {
+  color: #ff3333;
+  font-weight: 700;
+}
+
+#order_total {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  font-size: 22px;
+  border-top: 2px solid #0000001a;
+}
+
+#order_total li {
+  color: #151515;
+  font-weight: 600;
+}
+
+#checkout_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #151515;
+}
+
+#checkout_btn:hover {
+  background-color: #272727;
+}
