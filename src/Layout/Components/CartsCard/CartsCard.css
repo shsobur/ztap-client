@@ -26,7 +26,7 @@
 
 .title_and_delete_container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
@@ -52,12 +52,6 @@
   font-size: 18px;
 }
 
-.carts_card_info_container h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 10px;
-}
-
 .product_price_and_quantity_container {
   display: flex;
   align-content: end;
@@ -72,4 +66,95 @@
 .product_price_and_quantity_container li:nth-child(2) {
   font-size: 1.3rem;
   font-weight: 500;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1280px) {
+  .main_carts_card_container {
+    gap: 10px;
+  }
+
+  .carts_card_image_container {
+    width: 50%;
+  }
+
+  .title_and_delete_container h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .carts_card_info_container ul {
+    margin-top: 0px;
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-width: 1024px) {
+  .carts_card_image_container {
+    width: 40%;
+  }
+
+  .product_price_and_quantity_container {
+    padding-top: 10px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .carts_card_image_container {
+    width: 50%;
+  }
+
+  .product_price_and_quantity_container {
+    padding-top: 5px;
+  }
+}
+
+
+@media screen and (max-width: 640px) {
+  .carts_card_image_container {
+    width: 60%;
+  }
+
+  .product_price_and_quantity_container {
+    padding-top: 0px;
+  }
+
+  .title_and_delete_container h2 {
+    font-size: 1.2rem;
+  }
+
+  .carts_card_info_container ul {
+    font-size: 16px;
+  }
+
+  .product_price_and_quantity_container li:nth-child(1) {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .product_price_and_quantity_container li:nth-child(2) {
+    font-size: 1.2rem;
+  }
+}
+
+
+@media screen and (max-width: 475px) {
+  .title_and_delete_container h2 {
+    font-size: 4vw;
+  }
+
+  .carts_card_info_container ul {
+    font-size: 4vw;
+  }
+
+  .product_price_and_quantity_container li:nth-child(1) {
+    font-size: 5vw;
+  }
+  
+  .product_price_and_quantity_container li:nth-child(2) {
+    font-size: 5vw;
+  }
 }
