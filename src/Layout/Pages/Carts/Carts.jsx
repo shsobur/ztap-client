@@ -1,9 +1,22 @@
 import "./Carts.css";
+
 import { BsCart4 } from "react-icons/bs";
-import CartsCard from "../../Components/CartsCard/CartsCard";
 import { LuMoveRight } from "react-icons/lu";
+import useCart from "../../Hooks/useCart/useCart";
+import CartsCard from "../../Components/CartsCard/CartsCard";
 
 const Carts = () => {
+  const [carts] = useCart();
+  const discount = 10;
+
+  const handleTotalPrice = (products) => {
+    return products.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  };
+
+  const totalPrice = handleTotalPrice(carts);
+  const discountPrice = totalPrice - (totalPrice * discount) / 100;
+  const savedMony = totalPrice - discountPrice;
+
   return (
     <>
       <div className="main_carts_container">
@@ -13,7 +26,10 @@ const Carts = () => {
 
         <div className="carts_and_price_container">
           <div className="carts_container">
-            <CartsCard></CartsCard>
+            {carts.map((cart) => (
+              <CartsCard key={cart._id} cart={cart}></CartsCard>
+            ))}
+            {/* <CartsCard></CartsCard> */}
           </div>
 
           <div className="price_container">
@@ -22,17 +38,17 @@ const Carts = () => {
             <div className="order_info_container">
               <ul id="order_amount">
                 <li>Subtotal</li>
-                <li>$1400</li>
+                <li>${totalPrice}</li>
               </ul>
 
               <ul id="order_discount">
-                <li>First Order Discount (-20%)</li>
-                <li>- $144</li>
+                <li>Discount (-10%)</li>
+                <li>- ${savedMony}</li>
               </ul>
 
               <ul id="order_total">
                 <li>Total</li>
-                <li>$98679</li>
+                <li>${discountPrice}</li>
               </ul>
             </div>
 
