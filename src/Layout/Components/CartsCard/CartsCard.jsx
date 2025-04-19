@@ -5,7 +5,6 @@ const CartsCard = () => {
   return (
     <>
       <div className="main_carts_card_container">
-
         <div className="carts_card_image_container">
           <img
             src="https://i.postimg.cc/BbndkqLW/Athletic-Shoes-2-2.jpg"
@@ -14,7 +13,6 @@ const CartsCard = () => {
         </div>
 
         <div className="carts_card_info_container">
-
           <div className="title_and_delete_container">
             <h2>Gradient Graphic T-shirt</h2>
             <button>
@@ -31,9 +29,7 @@ const CartsCard = () => {
             <li>$145</li>
             <li>Quantity: 10</li>
           </ul>
-
         </div>
-
       </div>
     </>
   );
