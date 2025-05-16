@@ -1,13 +1,16 @@
+// File path__
 import "./TopSell.css";
-import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
 import AllProductCards from "../../../Components/AllProductCards/AllProductCards";
 
-// Swiper js__
+// Imported package__
 import "swiper/css";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// From react__
+import { useEffect, useState } from "react";
 
 const TopSell = () => {
   const axiosPublic = UseAxiosPublic();
@@ -21,7 +24,7 @@ const TopSell = () => {
     },
   });
 
-  // Getting current screen width__
+  // Gat current screen width__
 
   useEffect(() => {
     const handleScreenWidth = () => {

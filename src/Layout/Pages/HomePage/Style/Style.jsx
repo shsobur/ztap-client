@@ -14,7 +14,9 @@ const Style = () => {
         </div>
 
         <div className="style_btn_container">
-          <button className="button-86" role="button">Shop Now!</button>
+          <button className="button-86" role="button">
+            Shop Now!
+          </button>
         </div>
       </div>
     </>

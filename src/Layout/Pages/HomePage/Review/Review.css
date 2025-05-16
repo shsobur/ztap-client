@@ -16,32 +16,31 @@
 }
 
 .main_review_cart_container {
-
   border-radius: 8px;
   cursor: pointer;
   padding: 30px;
-  border: 2px solid #0000001A;
+  border: 2px solid #0000001a;
 }
 
-.review_reating_container {
+.review_rating_container {
   font-size: 1.5rem;
   font-weight: 500;
 }
 
-.revier_user_name_container {
+.review_user_name_container {
   display: flex;
   align-content: center;
   justify-content: flex-start;
 }
 
-.revier_user_name_container h2 {
+.review_user_name_container h2 {
   font-family: "Montserrat", serif;
   font-size: 1.3rem;
   font-weight: 600;
   padding: 10px 0;
 }
 
-.revier_user_name_container h3 {
+.review_user_name_container h3 {
   font-size: 1.3rem;
   color: #0c9e0c;
   padding-top: 15px;
@@ -73,7 +72,7 @@
   background-color: #383838;
 }
 
-/* Responsive styleing__ */
+/* Responsive styling__ */
 
 @media screen and (max-width: 1280px) {
   .main_review_outer_container {
@@ -93,7 +92,6 @@
   }
 }
 
-
 @media screen and (max-width: 1024px) {
   .main_review_outer_container {
     margin-top: 70px;
@@ -112,7 +110,6 @@
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .main_review_outer_container {
     margin-top: 60px;
@@ -122,7 +119,7 @@
     margin-top: 35px;
   }
 
-  .revier_user_name_container h2 {
+  .review_user_name_container h2 {
     font-size: 1.2rem;
   }
 
@@ -135,7 +132,6 @@
   }
 }
 
-
 @media screen and (max-width: 640px) {
   .main_review_outer_container {
     padding: 0 10px;
@@ -147,11 +143,11 @@
     text-align: center;
   }
 
-  .revier_user_name_container h2 {
+  .review_user_name_container h2 {
     font-size: 1.1rem;
   }
 
-  .revier_user_name_container h3 {
+  .review_user_name_container h3 {
     font-size: 1.1rem;
   }
 
@@ -159,7 +155,6 @@
     font-size: 16px;
   }
 }
-
 
 @media screen and (max-width: 475px) {
   .review_title_container h2 {

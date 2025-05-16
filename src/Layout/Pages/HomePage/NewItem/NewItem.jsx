@@ -1,19 +1,23 @@
+// File path__
 import "./NewItem.css";
-import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
 import LoadingSpinner from "../../../Components/LoadingSpinner/LoadingSpinner";
 import AllProductCards from "../../../Components/AllProductCards/AllProductCards";
-// Swiper js__
+
+// Imported package__
 import "swiper/css";
 import "swiper/css/navigation";
+import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+// Form react__
+import { useEffect, useState } from "react";
 
 const NewItem = () => {
   const axiosPublic = UseAxiosPublic();
   const [screenWidth, setScreenWidth] = useState(null);
 
-  // Geting new product__
+  // Gat new products__
   const { data: newItems = [], isLoading } = useQuery({
     queryKey: ["newItem"],
     queryFn: async () => {
@@ -22,7 +26,7 @@ const NewItem = () => {
     },
   });
 
-  // Geting current screen width__
+  // Gat current screen width__
   useEffect(() => {
     const handleScreenWidth = () => {
       setScreenWidth(window.innerWidth);

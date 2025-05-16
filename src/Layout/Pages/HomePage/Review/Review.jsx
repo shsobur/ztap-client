@@ -1,53 +1,55 @@
+// File path__
 import "./Review.css";
-import { useEffect, useState } from "react";
 import UseAxiosPublic from "../../../Hooks/axiosPublic/axiosPublic";
-// Swiper js__
+
+// Imported package__
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { SiTicktick } from "react-icons/si";
-// React rating__
-import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { SiTicktick } from "react-icons/si";
+import { Rating } from "@smastrom/react-rating";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Form react__
+import { useEffect, useState } from "react";
 
 const Review = () => {
   const axiosPublic = UseAxiosPublic();
   const [reviews, setReviews] = useState([]);
-  const [reviewLimite, setReviewLimite] = useState(6);
+  const [reviewLimit, setReviewLimit] = useState(6);
   const [screenSize, setScreenSize] = useState(null);
 
+  // Get limited data__
   useEffect(() => {
     axiosPublic
-      .get(`/fewReviews?limit=${reviewLimite}`)
+      .get(`/fewReviews?limit=${reviewLimit}`)
       .then((res) => {
         setReviews(res.data);
       })
       .catch((error) => {
         console.log("Error fetching reviews:", error);
       });
-  }, [axiosPublic, reviewLimite]);
+  }, [axiosPublic, reviewLimit]);
 
   const handleReviewLimit = () => {
-    const limit = reviewLimite + 6;
-    setReviewLimite(limit);
+    const limit = reviewLimit + 6;
+    setReviewLimit(limit);
   };
 
-  // Geting current width__
-
+  // Gat current width__
   useEffect(() => {
     const handleWindowSize = () => {
       setScreenSize(window.innerWidth);
-    }
+    };
 
-    if(window.innerWidth !== "undefined") {
+    if (window.innerWidth !== "undefined") {
       handleWindowSize();
 
       window.addEventListener("resize", handleWindowSize);
       return () => window.removeEventListener("resize", handleWindowSize);
     }
-  }, [])
-
+  }, []);
 
   return (
     <>
@@ -70,16 +72,20 @@ const Review = () => {
               {reviews.map((review) => (
                 <SwiperSlide key={review._id}>
                   <div className="main_review_cart_container">
-                    <div className="review_reating_container">
+                    <div className="review_rating_container">
                       <Rating
-                        style={screenSize <= 768 ? {maxWidth: 100} : {maxWidth: 130} }
+                        style={
+                          screenSize <= 768
+                            ? { maxWidth: 100 }
+                            : { maxWidth: 130 }
+                        }
                         value={review.rating}
                         readOnly
                       />
                     </div>
 
                     <div className="review_info_container">
-                      <div className="revier_user_name_container">
+                      <div className="review_user_name_container">
                         <h2>{review.userName}</h2>
                         <h3>
                           <SiTicktick />

@@ -8,6 +8,7 @@ import { LuPauseCircle } from "react-icons/lu";
 
 // From react__
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   const videoRef = useRef(null);
@@ -35,7 +36,6 @@ const Banner = () => {
     setIsPlay(true);
     setIsVideoEnd(true);
     setPlayIcon(!playIcon);
-    console.log("video has end", isVideoEnd);
   };
 
   return (
@@ -61,9 +61,11 @@ const Banner = () => {
                   garments, designed to bring out your individuality and cater
                   to your sense of style.
                 </p>
-                <button className="button-85" role="button">
-                  Shop Now
-                </button>
+                <Link to="/shop">
+                  <button className="button-85" role="button">
+                    Shop Now
+                  </button>
+                </Link>
               </div>
             )}
           </div>
