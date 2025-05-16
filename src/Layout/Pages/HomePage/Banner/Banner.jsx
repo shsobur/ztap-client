@@ -1,15 +1,21 @@
-import "./Baner.css";
-import { useRef, useState } from "react";
+// File path__
+import "./Banner.css";
+import bannerVideo from "../../../../assets/banner-video.mp4";
+
+// React icons__
 import { FiPlayCircle } from "react-icons/fi";
 import { LuPauseCircle } from "react-icons/lu";
-import banerVideo from "../../../../assets/baner-video.mp4";
 
-const Baner = () => {
+// From react__
+import { useRef, useState } from "react";
+
+const Banner = () => {
   const videoRef = useRef(null);
   const [isPlay, setIsPlay] = useState(false);
   const [playIcon, setPlayIcon] = useState(false);
   const [isVideoEnd, setIsVideoEnd] = useState(false);
 
+  // Video play__
   const handleVideoPlay = () => {
     if (videoRef.current.paused) {
       videoRef.current.play();
@@ -34,10 +40,10 @@ const Baner = () => {
 
   return (
     <>
-      <div className="main_baner_outer_container">
-        <div className="main_baner_video_container">
+      <div className="main_banner_outer_container">
+        <div className="main_banner_video_container">
           <video
-            src={banerVideo}
+            src={bannerVideo}
             ref={videoRef}
             onEnded={handleVideoEnd}
             autoPlay
@@ -45,8 +51,8 @@ const Baner = () => {
           />
         </div>
 
-        <div className="main_baner_overlay_container">
-          <div className="baner_text_container">
+        <div className="main_banner_overlay_container">
+          <div className="banner_text_container">
             {isVideoEnd && (
               <div className="overlay_inner_container">
                 <h2>FIND SHOES THAT MATCHES YOUR STYLE</h2>
@@ -62,7 +68,7 @@ const Baner = () => {
             )}
           </div>
 
-          <div className="baner_video_play_container">
+          <div className="banner_video_play_container">
             <h3 onClick={handleVideoPlay}>
               {playIcon ? <FiPlayCircle /> : <LuPauseCircle />}
             </h3>
@@ -74,4 +80,4 @@ const Baner = () => {
   );
 };
 
-export default Baner;
+export default Banner;

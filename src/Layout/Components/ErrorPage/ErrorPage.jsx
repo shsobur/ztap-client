@@ -26,8 +26,9 @@ const ErrorPage = () => {
 
           <div className="relative w-full mt-12 lg:w-1/2 lg:mt-0">
             <img
+            loading="lazy"
               className="w-full max-w-xs mx-auto sm:max-w-md lg:max-w-lg"
-              src="https://i.ibb.co.com/RPjVbz7/broken-robot-fix-technology-hand-260nw-527043610.jpg"
+              src="https://i.postimg.cc/0jyvSTT3/error404.jpg"
               alt="404 illustration"
             />
           </div>

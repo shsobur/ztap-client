@@ -1,4 +1,5 @@
-import Baner from "../Baner/Baner";
+// File path__
+import Banner from "../Banner/Banner";
 import Style from "../Style/Style";
 import Review from "../Review/Review";
 import Slider from "../Slider/Slider";
@@ -9,7 +10,7 @@ const HomePageLayout = () => {
   return (
     <>
       <div>
-        <Baner></Baner>
+        <Banner></Banner>
         <Slider></Slider>
         <NewItem></NewItem>
         <TopSell></TopSell>

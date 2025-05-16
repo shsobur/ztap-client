@@ -1,12 +1,15 @@
+// File path__
 import Main from "../Main/Main";
 import Carts from "../Pages/Carts/Carts";
-import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import SignUp from "../Pages/Authentication/SignUp/SignUp";
 import SignIn from "../Pages/Authentication/SignIn/SignIn";
-import HomePageLayout from "../Pages/HomePage/HomePageLayout/HomePageLayout";
-import ShopPageLayout from "../Pages/ShopPage/ShopPageLayout/ShopPageLayout";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
+import ShopPageLayout from "../Pages/ShopPage/ShopPageLayout/ShopPageLayout";
+import HomePageLayout from "../Pages/HomePage/HomePageLayout/HomePageLayout";
+
+// Imported package__
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-.main_baner_outer_container {
+.main_banner_outer_container {
   height: calc(90vh - 72px);
   position: relative;
   max-width: 1920px;
@@ -6,20 +6,20 @@
   margin-top: 72px;
 }
 
-/* Baner video styleing__ */
+/* Banner video styling__ */
 
-.main_baner_video_container {
+.main_banner_video_container {
   height: 100%;
   width: 100%;
 }
 
-.main_baner_video_container video {
+.main_banner_video_container video {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.main_baner_overlay_container {
+.main_banner_overlay_container {
   display: flex;
   align-items: center;
   height: 100%;
@@ -29,21 +29,21 @@
   background: linear-gradient(90deg, #151515, #15151536 100%);
 }
 
-/* Baner text info styleing__ */
+/* Banner text info styling__ */
 
-.baner_text_container {
+.banner_text_container {
   color: white;
   padding-left: 20px;
 }
 
-.baner_text_container h2 {
+.banner_text_container h2 {
   font-size: 4rem;
   padding-right: 930px;
   font-weight: 700;
   font-family: "Montserrat", sans-serif;
 }
 
-.baner_text_container p {
+.banner_text_container p {
   font-size: 1.1rem;
   font-weight: 300;
   padding: 20px 1100px 40px 0;
@@ -121,7 +121,7 @@
 
 /* Button style __END */
 
-/* Baner text animation styleing__ */
+/* Banner text animation styling__ */
 
 @keyframes slideUp {
   from {
@@ -138,9 +138,9 @@
   animation: slideUp 0.3s ease-out forwards;
 }
 
-/* Baner play button styleing__ */
+/* Banner play button styling__ */
 
-.baner_video_play_container {
+.banner_video_play_container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -155,24 +155,25 @@
   background-color: #ffffff33;
 }
 
-.baner_video_play_container h3 {
+.banner_video_play_container h3 {
   font-size: 3rem;
   cursor: pointer;
 }
 
-.baner_video_play_container p {
+.banner_video_play_container p {
   font-size: 1.2rem;
   padding-left: 5px;
   font-weight: 500;
 }
 
-/* Responsive styleing__ */
+/* Responsive styling__ */
+
 @media screen and (max-width: 1536px) {
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     padding-right: 700px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     font-size: 1.1rem;
     font-weight: 300;
     padding: 20px 800px 40px 0;
@@ -180,66 +181,66 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     font-size: 3.8rem;
     padding-right: 400px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     padding: 10px 450px 30px 0;
   }
 
-  .baner_video_play_container h3 {
+  .banner_video_play_container h3 {
     font-size: 2.6rem;
   }
 
-  .baner_video_play_container p {
+  .banner_video_play_container p {
     font-size: 1.2rem;
   }
 
-  .baner_video_play_container {
+  .banner_video_play_container {
     height: 60px;
     width: 180px;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .main_baner_outer_container {
+  .main_banner_outer_container {
     height: calc(90vh - 72px);
     width: 100%;
     position: relative;
     margin-top: 62px;
   }
 
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     font-size: 3.6rem;
     padding-right: 180px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     padding: 10px 250px 30px 0;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     font-size: 3.2rem;
     padding-right: 120px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     padding: 10px 150px 30px 0;
   }
 
-  .baner_video_play_container h3 {
+  .banner_video_play_container h3 {
     font-size: 2.4rem;
   }
 
-  .baner_video_play_container p {
+  .banner_video_play_container p {
     font-size: 1rem;
   }
 
-  .baner_video_play_container {
+  .banner_video_play_container {
     height: 50px;
     width: 160px;
     right: 30px;
@@ -248,43 +249,43 @@
 }
 
 @media screen and (max-width: 640px) {
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     font-size: 3rem;
     padding-right: 50px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     font-size: 14px;
     padding: 10px 100px 30px 0;
   }
 
-  .baner_video_play_container {
+  .banner_video_play_container {
     right: 20px;
     bottom: 20px;
   }
 
-  .baner_video_play_container h3 {
+  .banner_video_play_container h3 {
     font-size: 2.1rem;
   }
 
-  .baner_text_container button {
+  .banner_text_container button {
     padding: 8px 30px;
     font-size: 1.1rem;
   }
 }
 
 @media screen and (max-width: 475px) {
-  .baner_text_container h2 {
+  .banner_text_container h2 {
     font-size: 2rem;
     padding-right: 20px;
   }
 
-  .baner_text_container p {
+  .banner_text_container p {
     font-size: 12px;
     padding: 10px 30px 30px 0;
   }
 
-  .baner_text_container button {
+  .banner_text_container button {
     padding: 6px 20px;
     font-size: 1rem;
   }
