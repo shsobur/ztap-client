@@ -1,4 +1,5 @@
 import Main from "../Main/Main";
+import Carts from "../Pages/Carts/Carts";
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../Components/ErrorPage/ErrorPage";
 import SignUp from "../Pages/Authentication/SignUp/SignUp";
@@ -6,7 +7,6 @@ import SignIn from "../Pages/Authentication/SignIn/SignIn";
 import HomePageLayout from "../Pages/HomePage/HomePageLayout/HomePageLayout";
 import ShopPageLayout from "../Pages/ShopPage/ShopPageLayout/ShopPageLayout";
 import ProductDetails from "../Components/ProductDetails/ProductDetails";
-import Carts from "../Pages/Carts/Carts";
 
 const router = createBrowserRouter([
   {
@@ -25,11 +25,12 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <ProductDetails></ProductDetails>,
-        loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/carts",
-        element: <Carts></Carts>
+        element: <Carts></Carts>,
       },
       {
         path: "/signIn",

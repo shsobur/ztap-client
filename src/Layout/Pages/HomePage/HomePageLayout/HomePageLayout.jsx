@@ -6,7 +6,6 @@ import NewItem from "../NewItem/NewItem";
 import TopSell from "../TopSell/TopSell";
 
 const HomePageLayout = () => {
-
   return (
     <>
       <div>
